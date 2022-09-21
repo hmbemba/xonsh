@@ -1,0 +1,112 @@
+# XONSH WEBCONFIG START
+#$XONSH_COLOR_STYLE = 'dracula'
+# XONSH WEBCONFIG END
+
+import os
+import subprocess
+from pathlib import Path
+from FFO.item_class import item
+import xonsh
+import pprint
+
+xontrib load vox
+pp = pprint.PrettyPrinter(indent=4)
+#$PROMPT = '{user}@{hostname}:{cwd}:{env_name: {}}>' 
+
+$home = Path($HOMEPATH[0])
+$HOME = $home
+$desktop = Path($HOMEPATH[0]) / "Desktop"
+$env = ${...}
+$pwd = os.getcwd
+$XONSH_SHOW_TRACEBACK = True
+
+commands = r"C:\Users\hmbem\Documents\WindowsPowerShell\MyModules\Code\commands.py"
+
+def _start(arg):
+    if not arg:
+        raise Exception("you need an argument")
+    subprocess.run(["powershell.exe", f"start-process {arg[0]}"])
+
+def _venv():
+    subprocess.run(["python.exe", commands, "make_venv"])
+    vox enter "venv"
+    subprocess.run(["python.exe", commands, "make_main_dot_py"])
+    subprocess.run(["python.exe", commands, "make_vscode_folder"])
+    subprocess.run(["python.exe", commands, "make_settings_dot_json"])
+    subprocess.run(["python.exe", commands, "make_readme"])
+    subprocess.run(["python.exe", commands, "make_gitignore"])
+    
+    pip install mypy flake8 black pytest
+    pip freeze > requirements.txt
+    
+    git init
+    git add . #// this will stage your files for thier first commit
+    git status #//see all the files you have staged for commit
+    git commit -m "First Commit" #//your first commit with a comment
+    
+def _gitpush(arg):
+    git add '.'
+    git status
+    git commit -m arg
+    git push origin master
+
+def _workon(arg):
+    import datetime
+
+    tempProjectsFolder = r"C:\Users\hmbem\Desktop\Temp_Projects"
+    date = datetime.datetime.now().strftime(r'%m-%d-%y_%H-%M') #MM-dd-yy_hh-mmtt
+    
+    name = f"{arg[0]}_{date}"
+    fullPath = Path(f"{tempProjectsFolder}\\{name}")
+
+
+    if arg[0] == "show":
+        subprocess.run(["powershell.exe", f"start-process {tempProjectsFolder}"])
+    
+    else:
+        Path.mkdir(fullPath)
+        subprocess.run(["powershell.exe", f"code {fullPath}"])
+
+def _commands():
+    #pp.pprint(list(__xonsh__.aliases.items())[52:])
+    pp.pprint(list(__xonsh__.aliases)[52:])
+
+def _sdb(arg):
+    cd r"~\Desktop\Scripts\Python\Apps\Songdb"
+    vox enter venv
+    # python main.py arg[0]
+
+
+
+#---------------------------------------------------------
+# Powershell aliases
+aliases['start'] = _start
+aliases['ls'] = "powershell -Command ls"
+#---------------------------------------------------------
+# Code related aliases
+## Python
+aliases['pf'] = "pip freeze > requirements.txt"
+aliases['venv'] = _venv
+aliases['acvenv'] = "vox enter venv"
+
+## Xonsh
+aliases['ox'] = f"powershell -Command code {$XONSHRC[0]}"
+aliases['oxd'] = f"powershell -Command start-process {Path($XONSHRC[0]).parent}"
+
+## Git
+aliases['gitnew'] = 'gh repo create'
+aliases['gitlist'] = 'gh repo list'
+aliases['gitpush'] = _gitpush
+
+## Others
+aliases['workon'] = _workon
+#---------------------------------------------------------
+# Apps
+aliases['otf'] = ['python', r"C:\Users\hmbem\Desktop\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
+aliases['inv'] = ['code', r"C:\Users\hmbem\Desktop\Scripts\Python\Apps\Invoice_App"]
+aliases['sdb'] = _sdb#['cd',r'~\Desktop\Scripts\Python\Apps\Songdb','acvenv']
+#---------------------------------------------------------
+# Meta
+aliases['cmds'] = _commands
+#-----------------------------------------------------
+
