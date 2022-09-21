@@ -90,8 +90,8 @@ aliases['venv'] = _venv
 aliases['acvenv'] = "vox enter venv"
 
 ## Xonsh
-aliases['ox'] = f"powershell -Command code {$XONSHRC[0]}"
-aliases['oxd'] = f"powershell -Command start-process {Path($XONSHRC[0]).parent}"
+aliases['ox'] = f"powershell -Command code {Path($XONSHRC[0]).parent}"
+#aliases['oxd'] = f"powershell -Command start-process {Path($XONSHRC[0]).parent}"
 
 ## Git
 aliases['gitnew'] = 'gh repo create'
