@@ -54,7 +54,7 @@ def _gitpush(arg):
 def _workon(arg):
     import datetime
 
-    tempProjectsFolder = r"C:\Users\hmbem\Desktop\Temp_Projects"
+    tempProjectsFolder = fr"{$desktop}\Temp_Projects"
     date = datetime.datetime.now().strftime(r'%m-%d-%y_%H-%M') #MM-dd-yy_hh-mmtt
     
     name = f"{arg[0]}_{date}"
@@ -73,7 +73,7 @@ def _commands():
     pp.pprint(list(__xonsh__.aliases)[52:])
 
 def _sdb(arg):
-    cd r"~\Desktop\Scripts\Python\Apps\Songdb"
+    cd fr"{$desktop}\Scripts\Python\Apps\Songdb"
     vox enter venv
     # python main.py arg[0]
 
@@ -92,7 +92,7 @@ aliases['acvenv'] = "vox enter venv"
 
 ## Xonsh
 aliases['ox'] = f"powershell -Command code {Path($XONSHRC[0]).parent}"
-#aliases['oxd'] = f"powershell -Command start-process {Path($XONSHRC[0]).parent}"
+
 
 ## Git
 aliases['gitnew'] = 'gh repo create'
@@ -103,9 +103,11 @@ aliases['gitpush'] = _gitpush
 aliases['workon'] = _workon
 #---------------------------------------------------------
 # Apps
-aliases['otf'] = ['python', r"C:\Users\hmbem\Desktop\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
-aliases['inv'] = ['code', r"C:\Users\hmbem\Desktop\Scripts\Python\Apps\Invoice_App"]
-aliases['sdb'] = _sdb#['cd',r'~\Desktop\Scripts\Python\Apps\Songdb','acvenv']
+aliases['showapps'] = ['start', fr"{$desktop}\Scripts\Python\Apps"]
+aliases['otf'] = ['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
+aliases['inv'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Invoice_App"]
+aliases['sdb'] = _sdb
+aliases['editsdb'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Songdb"]
 #---------------------------------------------------------
 # Meta
 aliases['cmds'] = _commands
