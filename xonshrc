@@ -2,12 +2,14 @@
 #$XONSH_COLOR_STYLE = 'dracula'
 # XONSH WEBCONFIG END
 
+from ast import alias
 import os
 import subprocess
 from pathlib import Path
 from FFO.item_class import item
 import xonsh
 import pprint
+import datetime
 
 xontrib load vox
 pp = pprint.PrettyPrinter(indent=4)
@@ -80,8 +82,18 @@ def _commands():
 def _sdb(arg):
     cd fr"{$desktop}\Scripts\Python\Apps\Songdb"
     vox enter venv
-    # python main.py arg[0]
 
+def timestamp() -> str:
+    dt = datetime.datetime.now()
+    return dt.strftime("%m_%d_%Y-%I_%M%p")
+
+
+def _sp():
+    t = timestamp()
+    item.mkdir(f"StudioPics_{t}", r"V:\Projects\IG Content\Studio Pics")
+    loc = fr"V:\Projects\IG Content\Studio Pics\StudioPics_{t}"
+    subprocess.run(["powershell.exe", f'start-process "{loc}"'])
+    subprocess.run(["powershell.exe", fr'start-process "C:\ProgramData\Microsoft\Windows\Start Menu\Luminar AI.lnk"'])
 
 
 
@@ -140,4 +152,5 @@ aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
 aliases['opysnip'] = ['code', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
 aliases['rpysnip'] = ['start', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
 
+aliases['studiopics'] = _sp#lambda :item.mkdir(f"StudioPics_{timestamp()}", r"V:\Projects\IG Content\Studio Pics")
 
