@@ -126,6 +126,7 @@ aliases['inv'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Invoice_App"]
 aliases['sdb'] = _sdb
 aliases['editsdb'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Songdb"]
 aliases['todo'] = ['python', r'C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\main.py']
+aliases['edittodo'] = ['code', r"C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\TaskInstances.py"]
 
 #---------------------------------------------------------
 # Meta
@@ -134,6 +135,7 @@ aliases['cmds'] = _commands
 # Shortcuts
 aliases['oscripts'] = "explorer $scripts; exit"
 aliases['opython'] = "explorer $python; exit"
+aliases['oahk'] = "explorer $ahk; exit"
 aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
 aliases['opysnip'] = ['code', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
 aliases['rpysnip'] = ['start', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
