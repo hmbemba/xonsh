@@ -8,7 +8,6 @@ from pathlib import Path
 from FFO.item_class import item
 import xonsh
 import pprint
-#from Todo.Todo import mainMenu
 
 xontrib load vox
 pp = pprint.PrettyPrinter(indent=4)
@@ -126,6 +125,8 @@ aliases['otf'] = ['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormat
 aliases['inv'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Invoice_App"]
 aliases['sdb'] = _sdb
 aliases['editsdb'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Songdb"]
+aliases['todo'] = ['python', r'C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\main.py']
+
 #---------------------------------------------------------
 # Meta
 aliases['cmds'] = _commands
@@ -137,5 +138,4 @@ aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
 aliases['opysnip'] = ['code', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
 aliases['rpysnip'] = ['start', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
 
-aliases['todo'] = lambda:mainMenu.show()
 
