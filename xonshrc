@@ -8,6 +8,7 @@ from pathlib import Path
 from FFO.item_class import item
 import xonsh
 import pprint
+#from Todo.Todo import mainMenu
 
 xontrib load vox
 pp = pprint.PrettyPrinter(indent=4)
@@ -16,11 +17,14 @@ pp = pprint.PrettyPrinter(indent=4)
 $home = Path($HOMEPATH[0])
 $HOME = $home
 $desktop = Path($HOMEPATH[0]) / "Desktop"
+$scripts = $desktop / 'Scripts'
+$python = $scripts / 'Python'
+$ahk = $scripts / 'AHK'
 $env = ${...}
 $pwd = os.getcwd
 $XONSH_SHOW_TRACEBACK = True
 
-commands = r"C:\Users\hmbem\Documents\WindowsPowerShell\MyModules\Code\commands.py"
+commands = str(Path($XONSHRC[0]).parent / "Commands\commands.py")
 
 def _start(arg):
     if not arg:
@@ -63,10 +67,12 @@ def _workon(arg):
 
     if arg[0] == "show":
         subprocess.run(["powershell.exe", f"start-process {tempProjectsFolder}"])
+        exit
     
     else:
         Path.mkdir(fullPath)
         subprocess.run(["powershell.exe", f"code {fullPath}"])
+        exit 
 
 def _commands():
     #pp.pprint(list(__xonsh__.aliases.items())[52:])
@@ -76,6 +82,8 @@ def _sdb(arg):
     cd fr"{$desktop}\Scripts\Python\Apps\Songdb"
     vox enter venv
     # python main.py arg[0]
+
+
 
 
 
@@ -89,15 +97,25 @@ aliases['ls'] = "powershell -Command ls"
 aliases['pf'] = "pip freeze > requirements.txt"
 aliases['venv'] = _venv
 aliases['acvenv'] = "vox enter venv"
+aliases['main'] = "python main.py"
 
 ## Xonsh
 aliases['ox'] = f"powershell -Command code {Path($XONSHRC[0]).parent}"
+aliases['oxrc'] = f"powershell -Command code {Path($XONSHRC[0])}"
 
+# Edgedb
+aliases['edb'] = 'edgedb'
+aliases['edbm1'] = 'edgedb migration create'
+aliases['edbm2'] = 'edgedb migrate'
+aliases['edbgetschema'] = 'edgedb describe schema'
+aliases['edblist'] = 'edgedb instance list'
+aliases['edbstart'] = 'edgedb instance start'
 
 ## Git
 aliases['gitnew'] = 'gh repo create'
 aliases['gitlist'] = 'gh repo list'
 aliases['gitpush'] = _gitpush
+aliases['clone'] = 'gh repo clone'
 
 ## Others
 aliases['workon'] = _workon
@@ -112,4 +130,12 @@ aliases['editsdb'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Songdb"]
 # Meta
 aliases['cmds'] = _commands
 #-----------------------------------------------------
+# Shortcuts
+aliases['oscripts'] = "explorer $scripts; exit"
+aliases['opython'] = "explorer $python; exit"
+aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
+aliases['opysnip'] = ['code', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
+aliases['rpysnip'] = ['start', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
+
+aliases['todo'] = lambda:mainMenu.show()
 
