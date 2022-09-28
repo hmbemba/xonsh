@@ -50,7 +50,6 @@ def _venv():
     git commit -m "First Commit" #//your first commit with a comment
     
 def _gitpush(arg):
-    pip freeze > requirements.txt
     git add '.'
     git status
     git commit -m arg
