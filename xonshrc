@@ -25,7 +25,7 @@ $env = ${...}
 $pwd = os.getcwd
 $XONSH_SHOW_TRACEBACK = True
 
-commands = str(Path($XONSHRC[0]).parent / "Commands\commands.py")
+commands = str(Path($XONSHRC[0]).parent / "commands.py")
 
 def _start(arg):
     if not arg:
@@ -91,6 +91,8 @@ def _sp():
     t = timestamp()
     item.mkdir(f"StudioPics_{t}", r"V:\Projects\IG Content\Studio Pics")
     loc = fr"V:\Projects\IG Content\Studio Pics\StudioPics_{t}"
+    item.mkdir(f"Unedited", loc)
+    item.mkdir(f"Edited", loc)
     subprocess.run(["powershell.exe", f'start-process "{loc}"'])
     subprocess.run(["powershell.exe", fr'start-process "C:\ProgramData\Microsoft\Windows\Start Menu\Luminar AI.lnk"'])
 
