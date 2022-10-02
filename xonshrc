@@ -25,7 +25,7 @@ $ahk = $scripts / 'AHK'
 $env = ${...}
 $pwd = os.getcwd
 $XONSH_SHOW_TRACEBACK = True
-$XONSH_TRACEBACK_LOGFILE = "XONSH_TRACEBACK_LOGFILE.txt"
+$XONSH_TRACEBACK_LOGFILE = str(Path($XONSHRC[0]).parent / "XONSH_TRACEBACK_LOGFILE.txt")#r"C:\ProgramData\xonsh\XONSH_TRACEBACK_LOGFILE.txt#"XONSH_TRACEBACK_LOGFILE.txt"
 
 commands = str(Path($XONSHRC[0]).parent / "commands.py")
 
