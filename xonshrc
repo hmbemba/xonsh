@@ -3,6 +3,7 @@
 # XONSH WEBCONFIG END
 
 #from ast import alias
+from ast import alias
 import os
 import subprocess
 from pathlib import Path
@@ -88,7 +89,7 @@ def timestamp() -> str:
 
 
 def _sp():
-    if $COMPUTERNAME != 'DESKTOP-ROLF':
+    if $COMPUTERNAME != 'DESKTOP-I5FROLF':
         raise Exception('Wrong Computer')
     t = timestamp()
     item.mkdir(f"StudioPics_{t}", r"V:\Projects\IG Content\Studio Pics")
@@ -131,6 +132,7 @@ aliases['gitnew'] = 'gh repo create'
 aliases['gitlist'] = 'gh repo list'
 aliases['gitpush'] = _gitpush
 aliases['clone'] = 'gh repo clone'
+aliases['status'] = 'git status'
 
 ## Others
 aliases['workon'] = _workon
