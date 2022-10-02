@@ -87,7 +87,6 @@ def timestamp() -> str:
     dt = datetime.datetime.now()
     return dt.strftime("%m_%d_%Y-%I_%M%p")
 
-
 def _sp():
     if $COMPUTERNAME != 'DESKTOP-I5FROLF':
         raise Exception('Wrong Computer')
@@ -99,14 +98,12 @@ def _sp():
     subprocess.run(["powershell.exe", f'start-process "{loc}"'])
     subprocess.run(["powershell.exe", fr'start-process "C:\ProgramData\Microsoft\Windows\Start Menu\Luminar AI.lnk"'])
 
-
-
 def _openDirectory(arg):
     def help():
         print("Open Directory Coomnad\n")
         print('Available Options\n')
         for option in options:
-            print('\t',option['key'], ' : ', f'"option["path"]"',' | ', option['note'], '\n' )
+            print('\t',option['key'], ' : ', f'"{option["path"]}"',' | ', option['note'], '\n' )
 
     options = [
         {
@@ -156,7 +153,7 @@ def _runFile(arg):
         print("Run File Command\n")
         print('Available Options\n')
         for option in options:
-            print('\t',option['key'], ' : ', option['path'],' | ', option['note'], '\n' )
+            print('\t',option['key'], ' : ', f'"{option["path"]}"',' | ', option['note'], '\n' )
 
     options = [
         {
