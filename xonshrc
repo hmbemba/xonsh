@@ -102,6 +102,12 @@ def _sp():
 
 
 def _openDirectory(arg):
+    def help():
+        print("Open Directory Coomnad\n")
+        print('Available Options\n')
+        for option in options:
+            print('\t',option['key'], ' : ', f'"option["path"]"',' | ', option['note'], '\n' )
+
     options = [
         {
             'key':'apps',
@@ -124,22 +130,91 @@ def _openDirectory(arg):
             'note':'Python dir in Scripts folder'
         },
         {
+            'key':'ahk',
+            'path':$ahk,
+            'note':'AHK dir in Scripts folder'
+        },
+        {
             'key':'stupics',
             'path':r"V:\Projects\IG Content\Studio Pics",
             'note':'Studio Pics Folder'
         }
     ]
 
-    if arg[0] not in [option['key'] for option in options]:
+    if not arg:
+        help()
+    else:
+        if arg[0] not in [option['key'] for option in options]:
+            help()
+        else:
+            for option in options:
+                if arg[0] == option['key']:
+                    subprocess.run(["powershell.exe", f'start-process "{option["path"]}" '])
+
+def _runFile(arg):
+    def help():
+        print("Run File Command\n")
         print('Available Options\n')
         for option in options:
             print('\t',option['key'], ' : ', option['path'],' | ', option['note'], '\n' )
+
+    options = [
+        {
+            'key':'pysnip',
+            'path':fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk",
+            'note':'Python Snippets'
+        },
+
+    ]
+
+    if not arg:
+        help()
     else:
+        if arg[0] not in [option['key'] for option in options]:
+            help()
+        else:
+            for option in options:
+                if arg[0] == option['key']:
+                    subprocess.run(["powershell.exe", f'start-process "{option["path"]}" '])
+
+
+def _editFile(arg):
+    def help():
+        print("Edit File Command\n")
+        print('Available Options\n')
         for option in options:
-            if arg[0] == option['key']:
-                subprocess.run(["powershell.exe", f'start-process "{option["path"]}" '])
+            print('\t',option['key'],' : ', f'"{option["note"]}"', '\n' )
+    
+    options = [
+        {
+            'key':'pysnip',
+            'editStr':fr"code {$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk",
+            'note':'Edit Python Snippets'
+        },
+        {
+            'key':'sdb',
+            'editStr':fr"code {$desktop}\Scripts\Python\Apps\Songdb",
+            'note':'Edit Songdb'
+        },
+        {
+            'key':'todo',
+            'editStr':fr"code C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\TaskInstances.py",
+            'note':'Edit Todo App'
+        },
+    ]
 
-
+    if not arg:
+        help()
+    else:
+        if arg[0] not in [option['key'] for option in options]:
+            help()
+        else:
+            for option in options:
+                if arg[0] == option['key']:
+                    filePath = option['editStr'].split(' ')[1]
+                    if not Path(filePath).exists():
+                        raise Exception(f'Path "{filePath}" not found')
+                    subprocess.run(["powershell.exe", f'{option["editStr"]}'])
 
 #---------------------------------------------------------
 # Powershell aliases
@@ -158,8 +233,9 @@ aliases['mkvenv'] = 'python -m venv venv'
 aliases['ox'] = f"powershell -Command code {Path($XONSHRC[0]).parent}"
 aliases['oxrc'] = f"powershell -Command code {Path($XONSHRC[0])}"
 aliases['od'] = _openDirectory
-# aliases['of'] = _openFile
-# aliases['ef'] = _editFile
+aliases['rf'] = _runFile
+aliases['ef'] = _editFile
+aliases['cmds'] = _commands
 
 # Edgedb
 aliases['edb'] = 'edgedb'
@@ -176,27 +252,17 @@ aliases['gitpush'] = _gitpush
 aliases['clone'] = 'gh repo clone'
 aliases['status'] = 'git status'
 
-## Others
-aliases['workon'] = _workon
 #---------------------------------------------------------
 # Apps
-#aliases['oapps'] = ['start', fr"{$desktop}\Scripts\Python\Apps"]
+aliases['workon'] = _workon
 aliases['otf'] = ['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
 aliases['inv'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Invoice_App"]
 aliases['sdb'] = _sdb
-aliases['editsdb'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Songdb"]
 aliases['todo'] = ['python', r'C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\main.py']
-aliases['edittodo'] = ['code', r"C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\TaskInstances.py"]
 
-#---------------------------------------------------------
-# Meta
-aliases['cmds'] = _commands
 #-----------------------------------------------------
 # Shortcuts
-aliases['oahk'] = "explorer $ahk; exit"
-aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
-aliases['opysnip'] = ['code', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
-aliases['rpysnip'] = ['start', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
 
-aliases['studiopics'] = _sp#lambda :item.mkdir(f"StudioPics_{timestamp()}", r"V:\Projects\IG Content\Studio Pics")
+aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
+aliases['studiopics'] = _sp
 
