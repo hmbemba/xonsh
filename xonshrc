@@ -2,8 +2,7 @@
 #$XONSH_COLOR_STYLE = 'dracula'
 # XONSH WEBCONFIG END
 
-#from ast import alias
-from ast import alias
+from dataclasses import dataclass
 import os
 import subprocess
 from pathlib import Path
@@ -11,6 +10,7 @@ from FFO.item_class import item
 import xonsh
 import pprint
 import datetime
+#from commands import Option
 
 xontrib load vox
 pp = pprint.PrettyPrinter(indent=4)
@@ -25,6 +25,7 @@ $ahk = $scripts / 'AHK'
 $env = ${...}
 $pwd = os.getcwd
 $XONSH_SHOW_TRACEBACK = True
+$XONSH_TRACEBACK_LOGFILE = "XONSH_TRACEBACK_LOGFILE.txt"
 
 commands = str(Path($XONSHRC[0]).parent / "commands.py")
 
@@ -76,7 +77,6 @@ def _workon(arg):
         exit 
 
 def _commands():
-    #pp.pprint(list(__xonsh__.aliases.items())[52:])
     pp.pprint(list(__xonsh__.aliases)[52:])
 
 def _sdb(arg):
@@ -101,6 +101,45 @@ def _sp():
 
 
 
+def _openDirectory(arg):
+    options = [
+        {
+            'key':'apps',
+            'path':fr"{$desktop}\Scripts\Python\Apps",
+            'note':'Apps folder in Python dir'
+        },
+        {
+            'key':'scripts',
+            'path':$scripts,
+            'note':'Scripts folder'
+        },
+        {
+            'key':'py',
+            'path':$python,
+            'note':'Python dir in Scripts folder'
+        },
+        {
+            'key':'python',
+            'path':$python,
+            'note':'Python dir in Scripts folder'
+        },
+        {
+            'key':'stupics',
+            'path':r"V:\Projects\IG Content\Studio Pics",
+            'note':'Studio Pics Folder'
+        }
+    ]
+
+    if arg[0] not in [option['key'] for option in options]:
+        print('Available Options\n')
+        for option in options:
+            print('\t',option['key'], ' : ', option['path'],' | ', option['note'], '\n' )
+    else:
+        for option in options:
+            if arg[0] == option['key']:
+                subprocess.run(["powershell.exe", f'start-process "{option["path"]}" '])
+
+
 
 #---------------------------------------------------------
 # Powershell aliases
@@ -118,6 +157,9 @@ aliases['mkvenv'] = 'python -m venv venv'
 ## Xonsh
 aliases['ox'] = f"powershell -Command code {Path($XONSHRC[0]).parent}"
 aliases['oxrc'] = f"powershell -Command code {Path($XONSHRC[0])}"
+aliases['od'] = _openDirectory
+# aliases['of'] = _openFile
+# aliases['ef'] = _editFile
 
 # Edgedb
 aliases['edb'] = 'edgedb'
@@ -138,7 +180,7 @@ aliases['status'] = 'git status'
 aliases['workon'] = _workon
 #---------------------------------------------------------
 # Apps
-aliases['oapps'] = ['start', fr"{$desktop}\Scripts\Python\Apps"]
+#aliases['oapps'] = ['start', fr"{$desktop}\Scripts\Python\Apps"]
 aliases['otf'] = ['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
 aliases['inv'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Invoice_App"]
 aliases['sdb'] = _sdb
@@ -151,8 +193,6 @@ aliases['edittodo'] = ['code', r"C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo
 aliases['cmds'] = _commands
 #-----------------------------------------------------
 # Shortcuts
-aliases['oscripts'] = "explorer $scripts; exit"
-aliases['opython'] = "explorer $python; exit"
 aliases['oahk'] = "explorer $ahk; exit"
 aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
 aliases['opysnip'] = ['code', fr"{$ahk}\Code_Snippets\Python_Snippets\Python_Snippets.ahk"]
