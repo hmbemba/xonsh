@@ -2,7 +2,7 @@
 #$XONSH_COLOR_STYLE = 'dracula'
 # XONSH WEBCONFIG END
 
-from ast import alias
+#from ast import alias
 import os
 import subprocess
 from pathlib import Path
@@ -41,7 +41,7 @@ def _venv():
     subprocess.run(["python.exe", commands, "make_readme"])
     subprocess.run(["python.exe", commands, "make_gitignore"])
     
-    pip install mypy flake8 black pytest
+    pip install flake8 black pytest
     pip freeze > requirements.txt
     
     git init
@@ -88,6 +88,8 @@ def timestamp() -> str:
 
 
 def _sp():
+    if $COMPUTERNAME != 'DESKTOP-ROLF':
+        raise Exception('Wrong Computer')
     t = timestamp()
     item.mkdir(f"StudioPics_{t}", r"V:\Projects\IG Content\Studio Pics")
     loc = fr"V:\Projects\IG Content\Studio Pics\StudioPics_{t}"
@@ -110,6 +112,7 @@ aliases['pf'] = "pip freeze > requirements.txt"
 aliases['venv'] = _venv
 aliases['acvenv'] = "vox enter venv"
 aliases['main'] = "python main.py"
+aliases['mkvenv'] = 'python -m venv venv'
 
 ## Xonsh
 aliases['ox'] = f"powershell -Command code {Path($XONSHRC[0]).parent}"
@@ -133,7 +136,7 @@ aliases['clone'] = 'gh repo clone'
 aliases['workon'] = _workon
 #---------------------------------------------------------
 # Apps
-aliases['showapps'] = ['start', fr"{$desktop}\Scripts\Python\Apps"]
+aliases['oapps'] = ['start', fr"{$desktop}\Scripts\Python\Apps"]
 aliases['otf'] = ['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
 aliases['inv'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Invoice_App"]
 aliases['sdb'] = _sdb
