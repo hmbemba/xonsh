@@ -60,7 +60,8 @@ def _gitpush(arg):
 def _workon(arg):
     import datetime
 
-    tempProjectsFolder = fr"{$desktop}\Temp_Projects"
+    tempProjectsFolder = fr"{$scripts}\Temp_Projects"
+    item.FolderExistsOrError(tempProjectsFolder)
     date = datetime.datetime.now().strftime(r'%m-%d-%y_%H-%M') #MM-dd-yy_hh-mmtt
     
     name = f"{arg[0]}_{date}"

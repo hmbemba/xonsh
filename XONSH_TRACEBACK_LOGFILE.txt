@@ -1,0 +1,7 @@
+xonsh.tools.XonshError: xonsh: subprocess mode: command not found: powershell -Command code C:\ProgramData\xonsh
+xonsh.tools.XonshError: xonsh: subprocess mode: command not found: code C:\ProgramData\xonsh; exit
+Traceback (most recent call last):
+  File "C:\ProgramData\xonsh\xonshrc", line 230, in <module>
+    aliases['ox'] = exit#f"powershell -Command code {Path($XONSHRC[0]).parent}"
+NameError: name 'exit' is not defined
+xonsh.tools.XonshError: xonsh: subprocess mode: command not found: powershell -Command code C:\ProgramData\xonsh
