@@ -30,9 +30,26 @@ class Command(metaclass=ABCMeta):
 @dataclass
 class make_main_dot_py(Command):
     commandToPerform: str = "make main.py"
+    content:str = '''
+from dataclasses import dataclass, field
+from typing import Any, List
+from abc import ABCMeta, abstractmethod
+
+@dataclass
+class xx(metaclass=ABCMeta):
+    _: List = field(default_factory=lambda: [])
+
+    @abstractmethod
+	def foo(self):
+		pass
+
+@dataclass
+class xx:
+    _: List = field(default_factory=lambda: [])
+    '''
 
     def do(self):
-        item.mkfileNoOverwrite("main.py", ".")
+        item.mkfileNoOverwrite("main.py", ".",content=self.content)
 
 
 @dataclass
