@@ -226,6 +226,7 @@ aliases['venv'] = _venv
 aliases['acvenv'] = "vox enter venv"
 aliases['main'] = "python main.py"
 aliases['mkvenv'] = 'python -m venv venv'
+aliases['restartpip'] = 'python -m pip install --upgrade --force-reinstall pip'
 
 ## Xonsh
 aliases['ox'] = f"powershell -Command code {Path($XONSHRC[0]).parent}"
