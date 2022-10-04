@@ -7,7 +7,7 @@ from FFO.file_class import File
 from abc import ABCMeta, abstractmethod
 import fire
 import sys, inspect
-from Pathlib import Path
+from pathlib import Path
 
 
 @dataclass
