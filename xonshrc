@@ -214,6 +214,14 @@ def _editFile(arg):
                         raise Exception(f'Path "{filePath}" not found')
                     subprocess.run(["powershell.exe", f'{option["editStr"]}'])
 
+def _openXonsh():
+    subprocess.run(['powershell.exe', f'code "{Path($XONSHRC[0]).parent}"'])
+    exit
+
+def _openXonshRC():
+    subprocess.run(['powershell.exe', f'code "{Path($XONSHRC[0])}"'])
+    exit
+
 #---------------------------------------------------------
 # Powershell aliases
 aliases['start'] = _start
@@ -229,8 +237,8 @@ aliases['mkvenv'] = 'python -m venv venv'
 aliases['restartpip'] = 'python -m pip install --upgrade --force-reinstall pip'
 
 ## Xonsh
-aliases['ox'] = f"powershell -Command code {Path($XONSHRC[0]).parent}"
-aliases['oxrc'] = f"powershell -Command code {Path($XONSHRC[0])}"
+aliases['ox'] = _openXonsh
+aliases['oxrc'] = _openXonshRC#f"powershell -Command code {Path($XONSHRC[0])}"
 aliases['od'] = _openDirectory
 aliases['rf'] = _runFile
 aliases['ef'] = _editFile
