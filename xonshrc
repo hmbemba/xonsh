@@ -248,6 +248,7 @@ aliases['edbstart'] = 'edgedb instance start'
 aliases['gitnew'] = 'gh repo create'
 aliases['gitlist'] = 'gh repo list'
 aliases['gitpush'] = _gitpush
+aliases['gitpull'] = 'git pull'
 aliases['clone'] = 'gh repo clone'
 aliases['status'] = 'git status'
 
