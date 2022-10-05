@@ -265,3 +265,7 @@ aliases['todo'] = ['python', r'C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\m
 aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
 aliases['studiopics'] = _sp
 
+#---------------------------------------------
+# VIM
+aliases['vimm'] = lambda x: subprocess.run(["powershell.exe",f'vim "{x}"'])
+
