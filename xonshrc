@@ -222,6 +222,19 @@ def _openXonshRC():
     subprocess.run(['powershell.exe', f'code "{Path($XONSHRC[0])}"'])
     exit
 
+def _newFLProj(projName:str):
+    folders = [
+        projName[0],
+        fr"{projName[0]}/2_Production",
+        fr"{projName[0]}/3_Mix",
+        fr"{projName[0]}/4_Master",
+        fr"{projName[0]}/1_OG_Demo"
+    ]
+  
+    for folder in folders:
+        item.mkdir(folder, '.')
+    exit
+
 #---------------------------------------------------------
 # Powershell aliases
 aliases['start'] = _start
@@ -251,6 +264,7 @@ aliases['edbm2'] = 'edgedb migrate'
 aliases['edbgetschema'] = 'edgedb describe schema'
 aliases['edblist'] = 'edgedb instance list'
 aliases['edbstart'] = 'edgedb instance start'
+aliases['edbinit'] = 'edgedb project init'
 
 ## Git
 aliases['gitnew'] = 'gh repo create'
@@ -277,4 +291,8 @@ aliases['studiopics'] = _sp
 #---------------------------------------------
 # VIM
 aliases['vimm'] = lambda x: subprocess.run(["powershell.exe",f'vim "{x}"'])
+
+#-------------------------------------
+#Misc
+aliases['newflproj'] = _newFLProj
 
