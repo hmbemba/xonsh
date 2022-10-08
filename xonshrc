@@ -98,7 +98,7 @@ def _sp():
     item.mkdir(f"Edited", loc)
     subprocess.run(["powershell.exe", f'start-process "{loc}"'])
     subprocess.run(["powershell.exe", fr'start-process "C:\ProgramData\Microsoft\Windows\Start Menu\Luminar AI.lnk"'])
-    exit
+
 
 def _openDirectory(arg):
     def help():
