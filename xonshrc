@@ -42,8 +42,10 @@ def _venv():
     subprocess.run(["python.exe", commands, "make_settings_dot_json"])
     subprocess.run(["python.exe", commands, "make_readme"])
     subprocess.run(["python.exe", commands, "make_gitignore"])
-    
-    pip install flake8 black pytest
+    item.mkfileNoOverwrite(".env")
+    item.mkfileNoOverwrite(".dockerignore",'.',content='*/venv')
+    item.mkfileNoOverwrite("dockerfile")
+    pip install flake8 black pytest python-dotenv
     pip freeze > requirements.txt
     
     git init
@@ -235,6 +237,10 @@ def _newFLProj(projName:str):
         item.mkdir(folder, '.')
     exit
 
+def _otf():
+    cd fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter"#,"vox", "enter"python","main.py"]#['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
+    vox enter venv
+    python "main.py"
 #---------------------------------------------------------
 # Powershell aliases
 aliases['start'] = _start
@@ -277,7 +283,7 @@ aliases['status'] = 'git status'
 #---------------------------------------------------------
 # Apps
 aliases['workon'] = _workon
-aliases['otf'] = ['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
+aliases['otf'] = _otf#['cd',fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter","vox", "enter"python","main.py"]#['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
 aliases['inv'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Invoice_App"]
 aliases['sdb'] = _sdb
 aliases['todo'] = ['python', r'C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\main.py']

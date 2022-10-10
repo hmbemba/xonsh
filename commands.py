@@ -34,6 +34,13 @@ class make_main_dot_py(Command):
 from dataclasses import dataclass, field
 from typing import Any, List
 from abc import ABCMeta, abstractmethod
+from dotenv import load_dotenv
+# import os
+
+load_dotenv()
+
+
+# client_id = os.environ['SPOTIPY_CLIENT_ID']
 
 @dataclass
 class xx(metaclass=ABCMeta):
