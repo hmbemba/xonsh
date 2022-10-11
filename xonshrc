@@ -274,8 +274,8 @@ aliases['oxrc'] = _openXonshRC#f"powershell -Command code {Path($XONSHRC[0])}"
 aliases['od'] = _openDirectory
 aliases['rf'] = _runFile
 aliases['ef'] = _editFile
-# aliases['pullxonsh'] = _pullxonsh
-# aliases['pullxonsh'] = _pushxonsh
+aliases['pullxonsh'] = _pullxonsh
+aliases['pullxonsh'] = _pushxonsh
 aliases['cmds'] = _commands
 
 # Edgedb
