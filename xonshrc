@@ -26,6 +26,7 @@ $env = ${...}
 $pwd = os.getcwd
 $XONSH_SHOW_TRACEBACK = True
 $xonshdir = Path($XONSHRC[0]).parent
+$ssh = r"C:\Users\hmbem/.ssh/"
 #$XONSH_TRACEBACK_LOGFILE = str(Path($XONSHRC[0]).parent / "XONSH_TRACEBACK_LOGFILE.txt")#r"C:\ProgramData\xonsh\XONSH_TRACEBACK_LOGFILE.txt#"XONSH_TRACEBACK_LOGFILE.txt"
 
 commands = str(Path($XONSHRC[0]).parent / "commands.py")
