@@ -10,6 +10,8 @@ from FFO.item_class import item
 import xonsh
 import pprint
 import datetime
+from dotenv import load_dotenv
+load_dotenv()
 #from commands import Option
 
 xontrib load vox
@@ -27,7 +29,6 @@ $pwd = os.getcwd
 $XONSH_SHOW_TRACEBACK = True
 $xonshdir = Path($XONSHRC[0]).parent
 $ssh = r"C:\Users\hmbem/.ssh/"
-#$XONSH_TRACEBACK_LOGFILE = str(Path($XONSHRC[0]).parent / "XONSH_TRACEBACK_LOGFILE.txt")#r"C:\ProgramData\xonsh\XONSH_TRACEBACK_LOGFILE.txt#"XONSH_TRACEBACK_LOGFILE.txt"
 
 commands = str(Path($XONSHRC[0]).parent / "commands.py")
 
@@ -307,7 +308,7 @@ aliases['status'] = 'git status'
 ## Docker
 
 ## Digital Ocean
-$do_api_key = 'dop_v1_23c2630698fb05b5b33593af822480abc4c96508af95584388f4c90a7cd51358'
+$do_api_key = os.environ['do_api_key']
 aliases['do_allactions'] = 'curl -X GET "https://api.digitalocean.com/v2/actions" -H "Authorization: Bearer $do_api_key"'
 aliases['do_alldroplets'] = 'curl -X GET "https://api.digitalocean.com/v2/droplets" -H "Authorization: Bearer $do_api_key"'
 aliases['do_allsshkeys'] = 'curl -X GET "https://api.digitalocean.com/v2/account/keys" -H "Authorization: Bearer $do_api_key"'
