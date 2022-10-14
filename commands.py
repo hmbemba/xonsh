@@ -116,6 +116,7 @@ class make_gitignore(Command):
     content: str = """
 #Mine
 .vscode/
+.mypy_cache
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
