@@ -7,11 +7,13 @@ import os
 import subprocess
 from pathlib import Path
 from FFO.item_class import item
+from FFO.folder_class import Folder
 import xonsh
 import pprint
 import datetime
 from dotenv import load_dotenv
 import json
+from make_dj_app import Settings, Urls, BaseHTML, CreateViewHTML, ListViewHTML,UpdateViewHTML, mkdirs
 load_dotenv()
 
 #from commands import Option
@@ -25,6 +27,7 @@ $HOME = $home
 $desktop = Path($HOMEPATH[0]) / "Desktop"
 $scripts = $desktop / 'Scripts'
 $python = $scripts / 'Python'
+$apps = $python / 'Apps'
 $ahk = $scripts / 'AHK'
 $env = ${...}
 $pwd = os.getcwd
@@ -276,6 +279,38 @@ def ppjson(jsonStr:str):
     '''pretty prints a JSON string'''
     parsed = json.loads(jsonStr)
     print(json.dumps(parsed, indent=4))
+
+def _mkdjapp(args):
+    if not args:
+        return '''This command takes two positional arguments - a project name and an app name
+        You must enter a project name and app name like so : "mkdjapp myproj myapp" 
+        '''
+    if len(args) == 1:
+        return '''This command takes two positional arguments - a project name and an app name
+        You must enter a project name and app name like so : "mkdjapp myproj myapp" 
+        '''
+    projectName = args[0] 
+    appName = args[1] 
+    _venv()
+    pip install django gunicorn whitenoise black django-livereload-server
+    pip freeze > requirements.txt
+    subprocess.run([fr"{$pwd()}\venv\Scripts\django-admin.exe", "startproject",projectName])
+    $projPath = Path($pwd()) / projectName
+    $managePath =  $projPath / "manage.py"
+    $appPath = $projPath / appName
+
+    cd $projPath
+    subprocess.run(["python.exe",str($managePath),"startapp",appName])
+
+    mkdirs(str($appPath))
+    
+    Settings(projectName, appName).makeHere(str($projPath))
+    Urls(projectName, appName).makeHere(str($projPath))
+    BaseHTML(projectName, appName).makeHere(str($appPath / "templates"))
+    CreateViewHTML(projectName, appName).makeHere(str($appPath / "templates"))
+    ListViewHTML(projectName, appName).makeHere(str($appPath / "templates"))
+    UpdateViewHTML(projectName, appName).makeHere(str($appPath / "templates"))
+
 #---------------------------------------------------------
 # Powershell aliases
 aliases['start'] = _start
@@ -289,6 +324,9 @@ aliases['acvenv'] = "vox enter venv"
 aliases['main'] = "python main.py"
 aliases['mkvenv'] = 'python -m venv venv'
 aliases['restartpip'] = 'python -m pip install --upgrade --force-reinstall pip'
+
+## Django
+aliases['mkdjapp'] = _mkdjapp
 
 ## Xonsh
 aliases['ox'] = _openXonsh
@@ -335,14 +373,29 @@ aliases['do_openedbpage'] = 'start https://www.edgedb.com/docs/guides/deployment
 # Apps
 aliases['workon'] = _workon
 aliases['otf'] = _otf#['cd',fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter","vox", "enter"python","main.py"]#['python', fr"{$desktop}\Scripts\Python\Apps\ObsidianTextFormatter\main.py"]
-aliases['inv'] = ['code', fr"{$desktop}\Scripts\Python\Apps\Invoice_App"]
+aliases['inv'] = ['code', fr"{$apps}\Invoice_App"]
 aliases['sdb'] = _sdb
-aliases['todo'] = ['python', r'C:\Users\hmbem\Desktop\Scripts\Python\Apps\Todo\main.py']
+aliases['todo'] = ['python', fr'{$apps}\Todo\main.py']
+
+## Music Theory
+aliases["minscale"] = ['python', rf'{$apps}\MusicTheory\main.py', 'minscale']
+# aliases["majscale"] = : getMajScale,
+# aliases["mintri"] = :getMinTriad,
+# aliases["majtri"] = : getMajTriad,
+# aliases["secdom"] = : getSecDom,
+# aliases["dom7"] = : getDomSeventh,
+# aliases["maj7"] = : getMajSeventh,
+# aliases["min7"] = :getMinSeventh,
+# aliases["251"] = : get251,
+# aliases["firstdom"] = :getFirstDom,
+# aliases["majtomin"] = :majToMin,
+# aliases["mintomaj"] = :minToMaj,
+
 
 #-----------------------------------------------------
 # Shortcuts
 
-aliases['helium'] = ['code', fr"{$python}\Apps\helium_WORKING"]
+aliases['helium'] = ['code', fr"{$apps}\helium_WORKING"]
 aliases['studiopics'] = _sp
 
 #---------------------------------------------
