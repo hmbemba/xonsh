@@ -1,0 +1,26 @@
+def _venv():
+    subprocess.run(["python.exe", commands, "make_venv"])
+    vox enter "venv"
+    subprocess.run(["python.exe", commands, "make_main_dot_py"])
+    subprocess.run(["python.exe", commands, "make_vscode_folder"])
+    subprocess.run(["python.exe", commands, "make_settings_dot_json"])
+    subprocess.run(["python.exe", commands, "make_readme"])
+    subprocess.run(["python.exe", commands, "make_gitignore"])
+    item.mkfileNoOverwrite(".env")
+    item.mkfileNoOverwrite(".dockerignore",'.',content='*/venv')
+    item.mkfileNoOverwrite("dockerfile")
+    pip install flake8 black pytest python-dotenv refurb
+    pip freeze > requirements.txt
+    
+    git init
+    git add . #// this will stage your files for thier first commit
+    git status #//see all the files you have staged for commit
+    git commit -m "First Commit" #//your first commit with a comment
+
+## Python
+aliases['pf'] = "pip freeze > requirements.txt"
+aliases['venv'] = _venv
+aliases['acvenv'] = "vox enter venv"
+aliases['main'] = "python main.py"
+aliases['mkvenv'] = 'python -m venv venv'
+aliases['restartpip'] = 'python -m pip install --upgrade --force-reinstall pip'
