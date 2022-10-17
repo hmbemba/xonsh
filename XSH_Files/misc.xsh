@@ -1,7 +1,8 @@
 # Imports
 import json
-
 # Functions--------------------------------
+
+@noArgMsg()
 def _newFLProj(projName:str):
     folders = [
         projName[0],

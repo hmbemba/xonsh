@@ -12,9 +12,9 @@ $xonshdir = Path($XONSHRC[0]).parent
 $ssh = r"C:\Users\hmbem/.ssh/"
 
 
-from dataclasses import dataclass
+#from dataclasses import dataclass
 
-@dataclass
-class test:
-    def do(self):
-        print('it works')
+# @dataclass
+# class test:
+#     def do(self):
+#         print('it works')

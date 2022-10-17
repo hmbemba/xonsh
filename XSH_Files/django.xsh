@@ -1,3 +1,5 @@
+from make_dj_app import Settings, Urls, BaseHTML, CreateViewHTML, ListViewHTML,UpdateViewHTML, mkdirs
+
 def _mkdjapp(args):
     if not args:
         return '''This command takes two positional arguments - a project name and an app name

@@ -12,10 +12,14 @@ from FFO.item_class import item
 from FFO.folder_class import Folder
 import xonsh
 import pprint
-from make_dj_app import Settings, Urls, BaseHTML, CreateViewHTML, ListViewHTML,UpdateViewHTML, mkdirs
+from functools import wraps
 
 ## Sources
+### Must source first---------------
 source fr'{Path($XONSHRC[0]).parent}\XSH_Files\env.xsh'
+source r'C:\ProgramData\xonsh\XSH_Files\catch.xsh'
+
+### Secondary sources--------------
 source fr'{$xonshdir}\XSH_Files\digital_ocean.xsh'
 source fr'{$xonshdir}\XSH_Files\edgedb.xsh'
 source fr'{$xonshdir}\XSH_Files\git.xsh'
@@ -27,6 +31,7 @@ source fr'{$xonshdir}\XSH_Files\docker.xsh'
 source fr'{$xonshdir}\XSH_Files\apps.xsh'
 source fr'{$xonshdir}\XSH_Files\misc.xsh'
 source fr'{$xonshdir}\XSH_Files\xonsh_related.xsh'
+
 
 ## Xontribs
 xontrib load vox
