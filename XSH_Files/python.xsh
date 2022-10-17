@@ -1,4 +1,8 @@
+
+
 def _venv():
+    commands = str(Path($XONSHRC[0]).parent / "commands.py")
+    
     subprocess.run(["python.exe", commands, "make_venv"])
     vox enter "venv"
     subprocess.run(["python.exe", commands, "make_main_dot_py"])

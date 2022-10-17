@@ -20,7 +20,7 @@ def _commands():
 
 def _openDirectory(arg):
     def help():
-        print("Open Directory Coomnad\n")
+        print("Open Directory Command\n")
         print('Available Options\n')
         for option in options:
             print('\t',option['key'], ' : ', f'"{option["path"]}"',' | ', option['note'], '\n' )

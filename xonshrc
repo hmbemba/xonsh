@@ -33,5 +33,5 @@ xontrib load vox
 
 ## Load
 pp = pprint.PrettyPrinter(indent=4)
-commands = str(Path($XONSHRC[0]).parent / "commands.py")
+
 
