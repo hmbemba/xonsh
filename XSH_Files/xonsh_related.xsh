@@ -55,6 +55,16 @@ def _openDirectory(arg):
             'key':'stupics',
             'path':r"V:\Projects\IG Content\Studio Pics",
             'note':'Studio Pics Folder'
+        },
+        {
+            'key':'user',
+            'path':r"D:\User",
+            'note':'FL Samples'
+        },
+               {
+            'key':'george_demos',
+            'path':r"D:\FL Projects\George\DEMOS",
+            'note':''
         }
     ]
 
