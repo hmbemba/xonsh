@@ -46,8 +46,3 @@ pp = pprint.PrettyPrinter(indent=4)
 
 
 
-
-
-#json.loads(getSystemInfo())
-
-

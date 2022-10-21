@@ -1,5 +1,3 @@
-
-
 def _venv():
     commands = str(Path($XONSHRC[0]).parent / "commands.py")
     

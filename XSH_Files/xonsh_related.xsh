@@ -1,5 +1,3 @@
-# Imports
-
 # Functions
 def _pullxonsh():
     cd $xonshdir
