@@ -32,6 +32,7 @@ source fr'{$xonshdir}\XSH_Files\docker.xsh'
 source fr'{$xonshdir}\XSH_Files\apps.xsh'
 source fr'{$xonshdir}\XSH_Files\misc.xsh'
 source fr'{$xonshdir}\XSH_Files\xonsh_related.xsh'
+source fr'{$xonshdir}\XSH_Files\music.xsh'
 
 
 ## Xontribs

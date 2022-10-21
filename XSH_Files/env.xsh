@@ -1,6 +1,6 @@
 $home = Path($HOMEPATH[0])
 $HOME = $home
-$desktop = Path($HOMEPATH[0]) / "Desktop"
+$desktop = $HOMEDRIVE /Path($HOMEPATH[0]) / "Desktop"
 $scripts = $desktop / 'Scripts'
 $python = $scripts / 'Python'
 $apps = $python / 'Apps'
@@ -10,6 +10,7 @@ $pwd = os.getcwd
 $XONSH_SHOW_TRACEBACK = True
 $xonshdir = Path($XONSHRC[0]).parent
 $ssh = r"C:\Users\hmbem/.ssh/"
+$oc = r"C:\Users\hmbem\Desktop\OneCommander\OneCommander.exe"
 
 
 #from dataclasses import dataclass
