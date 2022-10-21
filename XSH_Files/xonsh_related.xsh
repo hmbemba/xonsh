@@ -1,3 +1,5 @@
+# Imports
+
 # Functions
 def _pullxonsh():
     cd $xonshdir
@@ -61,12 +63,12 @@ def _openDirectory(arg):
             'path':r"D:\User",
             'note':'FL Samples'
         },
-               {
+        {
             'key':'george_demos',
             'path':r"D:\FL Projects\George\DEMOS",
             'note':''
         },
-               {
+        {
             'key':'titkok_remixes',
             'path':r"D:\FL Projects\George\DEMOS\TikTok_Remixes",
             'note':'Tik Tok Remix Productions'
@@ -81,7 +83,8 @@ def _openDirectory(arg):
         else:
             for option in options:
                 if arg[0] == option['key']:
-                    subprocess.run(["powershell.exe", f'start-process "{option["path"]}" '])
+                    f = Folder(f"{option['path']}")
+                    $oc f"{option['path']}"
 
 def _runFile(arg):
     def help():
