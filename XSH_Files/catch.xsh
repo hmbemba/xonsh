@@ -24,12 +24,3 @@ def noArgErr(msg:str = 'This command requires an argument'):
             fn(args[0])
         return wrapper
     return decorate
-
-# @noArgMsg()
-# def _test(arg):
-#     print('this works' )
-#     print(arg)
-#     print(type(arg))
-
-
-# aliases['tt'] = _test

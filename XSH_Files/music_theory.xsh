@@ -11,6 +11,7 @@ aliases["251"] = [ 'python', rf'{$apps}\MusicTheory\main.py', "251"]
 aliases["firstdom"] =[ 'python', rf'{$apps}\MusicTheory\main.py', "firstdom"]
 aliases["majtomin"] =[ 'python', rf'{$apps}\MusicTheory\main.py', "majtomin"]
 aliases["mintomaj"] =[ 'python', rf'{$apps}\MusicTheory\main.py', "mintomaj"]
+
 aliases['game_findspecificnote'] = ['python', rf'{$apps}\MusicTheory\games.py', 'findspecificnote'] #FindSpecificNote().play,
 aliases['game_convertthescale'] = ['python', rf'{$apps}\MusicTheory\games.py', 'convertthescale'] #ConvertTheScale().play,
 aliases['game_circloffifths'] = ['python', rf'{$apps}\MusicTheory\games.py', 'circloffifths'] #CircleOfFifths().play,
