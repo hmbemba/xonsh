@@ -1,6 +1,6 @@
 $home = Path($HOMEPATH[0])
 $HOME = $home
-$desktop = $HOMEDRIVE /Path($HOMEPATH[0]) / "Desktop"
+$desktop = $HOMEDRIVE / $home / "Desktop"
 $scripts = $desktop / 'Scripts'
 $python = $scripts / 'Python'
 $apps = $python / 'Apps'
