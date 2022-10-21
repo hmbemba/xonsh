@@ -65,7 +65,12 @@ def _openDirectory(arg):
             'key':'george_demos',
             'path':r"D:\FL Projects\George\DEMOS",
             'note':''
-        }
+        },
+               {
+            'key':'titkok_remixes',
+            'path':r"D:\FL Projects\George\DEMOS\TikTok_Remixes",
+            'note':'Tik Tok Remix Productions'
+        },
     ]
 
     if not arg:
