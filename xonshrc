@@ -13,6 +13,12 @@ from FFO.folder_class import Folder
 import xonsh
 import pprint
 from functools import wraps
+import platform
+import socket
+import re
+import uuid
+import json
+import psutil#,logging
 
 ## Sources
 ### Must source first---------------
@@ -38,5 +44,11 @@ xontrib load vox
 
 ## Load
 pp = pprint.PrettyPrinter(indent=4)
+
+
+
+
+
+#json.loads(getSystemInfo())
 
 

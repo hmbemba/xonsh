@@ -41,7 +41,25 @@ def _sp():
     subprocess.run(["powershell.exe", f'start-process "{loc}"'])
     subprocess.run(["powershell.exe", fr'start-process "C:\ProgramData\Microsoft\Windows\Start Menu\Luminar AI.lnk"'])
 
+def getSystemInfo():
+    try:
+        info={}
+        info['platform']=platform.system()
+        info['platform-release']=platform.release()
+        info['platform-version']=platform.version()
+        info['architecture']=platform.machine()
+        info['hostname']=socket.gethostname()
+        info['ip-address']=socket.gethostbyname(socket.gethostname())
+        info['mac-address']=':'.join(re.findall('..', '%012x' % uuid.getnode()))
+        info['processor']=platform.processor()
+        info['ram']=str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
+        return info
+    except Exception as e:
+        #logging.exception(e)
+        print(e)
+    
 # Aliases----------------
 aliases['studiopics'] = _sp
 aliases['newflproj'] = _newFLProj
 aliases['vimm'] = lambda x: subprocess.run(["powershell.exe",f'vim "{x}"'])
+aliases['sys'] = lambda: pp.pprint(getSystemInfo())

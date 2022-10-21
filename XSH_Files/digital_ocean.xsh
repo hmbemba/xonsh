@@ -20,6 +20,18 @@ def _do_deldroplet(droplet_id):
 def _do_sshlogin(app_ip_addr):
     subprocess.run(['powershell.exe',f'ssh -i {str($do_key)} root@{app_ip_addr[0]}'])
 
+@noArgMsg('You must enter the ip address of the app you are logged into like so: "do_edb_config1 157.230.53.205"')
+def _do_edbconfig_1(app_ip_addr):
+    print(f"IP={app_ip_addr[0]}")
+
+def _do_edbconfig_3():
+    print('''printf edgedbpassword | edgedb query \\
+    --host $IP \\
+    --password-from-stdin \\
+    --tls-security insecure \\
+    "alter role edgedb set password := '${PASSWORD}'"
+    ''')
+
 # Aliases----------------------------------
 aliases['do_allactions'] = 'curl -X GET "https://api.digitalocean.com/v2/actions" -H "Authorization: Bearer $do_api_key"'
 aliases['do_alldroplets'] = 'curl -X GET "https://api.digitalocean.com/v2/droplets" -H "Authorization: Bearer $do_api_key"'
@@ -29,3 +41,7 @@ aliases['do_newedb'] = _do_newedb
 aliases['do_deldroplet'] = _do_deldroplet
 aliases['do_sshlogin'] = _do_sshlogin
 aliases['do_openedbpage'] = 'start https://www.edgedb.com/docs/guides/deployment/digitalocean'
+aliases['do_edbconfig_1'] = _do_edbconfig_1
+aliases['do_edbconfig_2'] = lambda:print('''echo -n "> " && read -s PASSWORD''')
+aliases['do_edbconfig_3'] = _do_edbconfig_3
+aliases['do_edb_config_4'] = lambda: print('''echo edgedb://edgedb:$PASSWORD@$IP > dsn.txt''')
