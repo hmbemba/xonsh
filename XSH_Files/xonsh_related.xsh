@@ -159,3 +159,4 @@ aliases['ef'] = _editFile
 aliases['pullxonsh'] = _pullxonsh
 aliases['pushxonsh'] = _pushxonsh
 aliases['cmds'] = _commands
+aliases['oc'] = $oc
