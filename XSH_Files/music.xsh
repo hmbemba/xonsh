@@ -2,7 +2,7 @@ def _newTiktokDemo():
     start 'https://charts.spotify.com/charts/view/regional-us-weekly/latest'
     start "https://play.soundplate.com/analyze/track"
     start "https://songbpm.com"
-    start "wwww.youtube.com"
+    start "www.youtube.com"
 
 
     $oc r'D:\FL Projects\George\DEMOS\TikTok_Remixes'
