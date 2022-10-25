@@ -71,6 +71,11 @@ def _openDirectory(arg):
             'path':r"D:\FL Projects\George\DEMOS\TikTok_Remixes",
             'note':'Tik Tok Remix Productions'
         },
+        {
+            'key':'dbs',
+            'path':r"C:\Users\hmbem\Desktop\Scripts\Python\Databases",
+            'note':'Databases'
+        },
     ]
 
     if not arg:
