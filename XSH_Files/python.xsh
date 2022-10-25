@@ -11,13 +11,16 @@ def _venv():
     item.mkfileNoOverwrite(".env")
     item.mkfileNoOverwrite(".dockerignore",'.',content='*/venv')
     item.mkfileNoOverwrite("dockerfile")
-    pip install flake8 black pytest python-dotenv refurb
+    
+    pip install flake8 black pytest python-dotenv refurb pretty_errors
     pip freeze > requirements.txt
     
     git init
     git add . #// this will stage your files for thier first commit
     git status #//see all the files you have staged for commit
     git commit -m "First Commit" #//your first commit with a comment
+
+    print('Installed flake8 black pytest python-dotenv refurb pretty_errors')
 
 ## Python
 aliases['pf'] = "pip freeze > requirements.txt"
