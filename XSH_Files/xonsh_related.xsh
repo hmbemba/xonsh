@@ -83,6 +83,7 @@ def _openDirectory(arg):
                 if arg[0] == option['key']:
                     f = Folder(f"{option['path']}")
                     $oc f"{option['path']}"
+                    exit
 
 def _runFile(arg):
     def help():
