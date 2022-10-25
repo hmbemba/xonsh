@@ -22,73 +22,20 @@ def _openDirectory(arg):
     def help():
         print("Open Directory Command\n")
         print('Available Options\n')
-        for option in options:
-            print('\t',option['key'], ' : ', f'"{option["path"]}"',' | ', option['note'], '\n' )
-
-    options = [
-        {
-            'key':'apps',
-            'path':fr"{$desktop}\Scripts\Python\Apps",
-            'note':'Apps folder in Python dir'
-        },
-        {
-            'key':'scripts',
-            'path':$scripts,
-            'note':'Scripts folder'
-        },
-        {
-            'key':'py',
-            'path':$python,
-            'note':'Python dir in Scripts folder'
-        },
-        {
-            'key':'python',
-            'path':$python,
-            'note':'Python dir in Scripts folder'
-        },
-        {
-            'key':'ahk',
-            'path':$ahk,
-            'note':'AHK dir in Scripts folder'
-        },
-        {
-            'key':'stupics',
-            'path':r"V:\Projects\IG Content\Studio Pics",
-            'note':'Studio Pics Folder'
-        },
-        {
-            'key':'user',
-            'path':r"D:\User",
-            'note':'FL Samples'
-        },
-        {
-            'key':'george_demos',
-            'path':r"D:\FL Projects\George\DEMOS",
-            'note':''
-        },
-        {
-            'key':'titkok_remixes',
-            'path':r"D:\FL Projects\George\DEMOS\TikTok_Remixes",
-            'note':'Tik Tok Remix Productions'
-        },
-        {
-            'key':'dbs',
-            'path':r"C:\Users\hmbem\Desktop\Scripts\Python\Databases",
-            'note':'Databases'
-        },
-    ]
+        entries = od_getAll()
+        print(tabulate(entries,headers={'key':'key', 'path':'path','note':'note'}, tablefmt="grid"))
 
     if not arg:
         help()
     else:
-        if arg[0] not in [option['key'] for option in options]:
+        if arg[0] not in od_getAllKeys():#[option['key'] for option in options]:
             help()
         else:
-            for option in options:
-                if arg[0] == option['key']:
-                    f = Folder(f"{option['path']}")
-                    $oc f"{option['path']}"
-                    exit
+            for entry in od_getAll():
+                if arg[0] == entry['key']:
+                    #f = Folder(f"{entry['path']}")
+                    $oc f"{entry['path']}"
+                    #exit
 
 def _runFile(arg):
     def help():
@@ -115,7 +62,6 @@ def _runFile(arg):
             for option in options:
                 if arg[0] == option['key']:
                     subprocess.run(["powershell.exe", f'start-process "{option["path"]}" '])
-
 
 def _editFile(arg):
     def help():
@@ -154,7 +100,6 @@ def _editFile(arg):
                     if not Path(filePath).exists():
                         raise Exception(f'Path "{filePath}" not found')
                     subprocess.run(["powershell.exe", f'{option["editStr"]}'])
-
 
 # Aliases-----------------------------------
 aliases['ox'] = _openXonsh

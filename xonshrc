@@ -16,6 +16,7 @@ import json
 import psutil
 from db.OpenDirectory_Model.V1.OpenDirectory_Model_V1 import *
 from dotenv import load_dotenv
+from tabulate import tabulate
 
 load_dotenv()
 
