@@ -1,4 +1,3 @@
-import fire
 from pony import orm
 from pathlib import Path
 
