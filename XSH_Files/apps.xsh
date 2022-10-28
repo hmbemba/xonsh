@@ -27,7 +27,7 @@ def _workon(arg):
         exit 
 
 # Aliases------------------------------
-aliases['workon'] = _workon
+aliases['wo'] = _workon
 aliases['otf'] = _otf
 aliases['inv'] = ['code', fr"{$apps}\Invoice_App"]
 aliases['sdb'] = _sdb
