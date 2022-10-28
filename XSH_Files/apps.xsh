@@ -9,20 +9,19 @@ def _sdb(arg):
     vox enter venv
 
 def _workon(arg):
-    import datetime
-
     tempProjectsFolder = fr"{$scripts}\Temp_Projects"
-    item.FolderExistsOrError(tempProjectsFolder)
-    date = datetime.datetime.now().strftime(r'%m-%d-%y_%H-%M') #MM-dd-yy_hh-mmtt
-    
-    name = f"{arg[0]}_{date}"
-    fullPath = Path(f"{tempProjectsFolder}\\{name}")
-
-    if arg[0] == "show":
-        subprocess.run(["powershell.exe", f"start-process {tempProjectsFolder}"])
+    if not arg:
+        $oc tempProjectsFolder
         exit
-    
     else:
+
+        
+        item.FolderExistsOrError(tempProjectsFolder)
+        date = timestamp()
+        
+        name = f"{arg[0]}_{date}"
+        fullPath = Path(f"{tempProjectsFolder}\\{name}")
+
         Path.mkdir(fullPath)
         subprocess.run(["powershell.exe", f"code {fullPath}"])
         exit 
