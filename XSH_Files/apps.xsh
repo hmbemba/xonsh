@@ -11,7 +11,7 @@ def _sdb(arg):
 def _workon(arg):
     tempProjectsFolder = fr"{$scripts}\Temp_Projects"
     if not arg:
-        $oc tempProjectsFolder
+        $oc fr"{$scripts}\Temp_Projects"
         exit
     else:
 
