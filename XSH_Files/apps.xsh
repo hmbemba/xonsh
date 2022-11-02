@@ -4,9 +4,9 @@ def _otf():
     vox enter venv
     python "main.py"
 
-def _sdb(arg):
-    cd fr"{$desktop}\Scripts\Python\Apps\Songdb"
-    vox enter venv
+# def _sdb(arg):
+#     cd fr"{$desktop}\Scripts\Python\Apps\Songdb"
+#     vox enter venv
 
 def _workon(arg):
     tempProjectsFolder = fr"{$scripts}\Temp_Projects"
@@ -30,6 +30,6 @@ def _workon(arg):
 aliases['wo'] = _workon
 aliases['otf'] = _otf
 aliases['inv'] = ['code', fr"{$apps}\Invoice_App"]
-aliases['sdb'] = _sdb
+#aliases['sdb'] = _sdb
 aliases['todo'] = ['python', fr'{$apps}\Todo\main.py']
 aliases['helium'] = ['code', fr"{$apps}\helium_WORKING"]
