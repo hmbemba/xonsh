@@ -36,7 +36,7 @@ def _openDirectory(arg):
             entry = od_getByKey(arg[0])
             $oc f"{entry.path}"
             exit
-    exit
+
 
 
 def _runFile(arg):
