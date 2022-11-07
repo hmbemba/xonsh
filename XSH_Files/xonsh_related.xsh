@@ -28,7 +28,9 @@ def _openDirectory(arg):
     if not arg:
         help()
     else:
-        if arg[0] not in od_getAllKeys():#[option['key'] for option in options]:
+        if arg[0] not in od_getAllKeys(): 
+            # the locaton of od_getAllKeys() is below
+            # C:\ProgramData\xonsh\db\OpenDirectory_Model\V1\OpenDirectory_Model_V1.py
             help()
         else:
             entry = od_getByKey(arg[0])
