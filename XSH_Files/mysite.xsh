@@ -11,3 +11,5 @@ def _sdb_getbybpm(arg):
 aliases['sdb_insert'] = _sdb_insert
 aliases['sdb_getall'] = f"curl {$sitename}/sdb/getall"
 aliases['sdb_getbybpm'] = _sdb_getbybpm
+
+
