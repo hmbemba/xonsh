@@ -31,11 +31,10 @@ def _openDirectory(arg):
         if arg[0] not in od_getAllKeys():#[option['key'] for option in options]:
             help()
         else:
-            for entry in od_getAll():
-                if arg[0] == entry['key']:
-                    #f = Folder(f"{entry['path']}")
-                    $oc f"{entry['path']}"
-                    #exit
+            entry = od_getByKey(arg[0])
+            $oc f"{entry.path}"
+            exit
+
 
 def _runFile(arg):
     def help():

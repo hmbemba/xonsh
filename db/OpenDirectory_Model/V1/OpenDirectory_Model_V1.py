@@ -44,6 +44,11 @@ def od_getAllKeys():
     return list(query)
 
 @orm.db_session
+def od_getByKey(key):
+    #query = orm.select(e.key for e in OpenDirectory)
+    return OpenDirectory.get(key=key) #list(query)
+
+@orm.db_session
 def od_delByKey(key):
     try:
         OpenDirectory.get(key=key).delete()
