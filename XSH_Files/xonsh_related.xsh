@@ -37,8 +37,6 @@ def _openDirectory(arg):
             $oc f"{entry.path}"
             exit
 
-
-
 def _runFile(arg):
     def help():
         print("Run File Command\n")
@@ -103,6 +101,21 @@ def _editFile(arg):
                         raise Exception(f'Path "{filePath}" not found')
                     subprocess.run(["powershell.exe", f'{option["editStr"]}'])
 
+def _importCommands():
+    fileName = "commands.xsh"
+    pathToCommands = Path($pwd()) / fileName
+    if pathToCommands.exists():
+        source f"{pathToCommands}"
+        print(f"successfully sourced {fileName}")
+    else:
+        print(f'''
+        Couldn't find "{fileName}"
+        Was expecting to be here
+
+        {pathToCommands}
+        ''')
+
+
 # Aliases-----------------------------------
 aliases['ox'] = _openXonsh
 aliases['oxrc'] = _openXonshRC
@@ -113,3 +126,4 @@ aliases['pullxonsh'] = _pullxonsh
 aliases['pushxonsh'] = _pushxonsh
 aliases['cmds'] = _commands
 aliases['oc'] = $oc
+aliases['importcommands'] = _importCommands
