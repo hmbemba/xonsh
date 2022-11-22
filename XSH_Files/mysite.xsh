@@ -17,9 +17,20 @@ def _sdb_getbybpm(args):
     
     curl f"{$sitename}/sdb/getbybpm/{bpm}/{plusMinus}"
 
+
+def _sampleThis(args):
+    # arg = args[0]
+    # #print(arg)
+    # curl f"{$sitename}/sdb/getall/orderedby/{arg}"
+    if args[0]:
+        curl f"{$sitename}/sdb/addSampleThisTag/{args[0]}"
+    else:
+        curl f"{$sitename}/sdb/getAllWithSampleThisTag"
+
 aliases['sdb_insert'] = _sdb_insert
 aliases['sdb_getall'] = f"curl {$sitename}/sdb/getall"
 aliases['sdb_getall_orderedby'] = _getAll_orderedBy
 aliases['sdb_getbybpm'] = _sdb_getbybpm
+aliases['sdb_samplethis'] = _sdb_sampleThis
 
 
