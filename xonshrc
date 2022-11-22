@@ -40,6 +40,7 @@ source fr'{$xonshdir}\XSH_Files\misc.xsh'
 source fr'{$xonshdir}\XSH_Files\xonsh_related.xsh'
 source fr'{$xonshdir}\XSH_Files\music.xsh'
 source fr'{$xonshdir}\XSH_Files\mysite.xsh'
+source fr'{$xonshdir}\XSH_Files\nim.xsh'
 
 
 ## Xontribs
@@ -47,6 +48,10 @@ xontrib load vox
 
 ## Load
 pp = pprint.PrettyPrinter(indent=4)
+
+
+
+
 
 
 
