@@ -18,12 +18,10 @@ def _sdb_getbybpm(args):
     curl f"{$sitename}/sdb/getbybpm/{bpm}/{plusMinus}"
 
 
-def _sampleThis(args):
-    # arg = args[0]
-    # #print(arg)
-    # curl f"{$sitename}/sdb/getall/orderedby/{arg}"
-    if args[0]:
-        curl f"{$sitename}/sdb/addSampleThisTag/{args[0]}"
+def _sdb_sampleThis(args):
+    if args:
+        url = args[0]
+        curl --data f'url={url}' f"{$sitename}/sdb/addSampleThisTag"
     else:
         curl f"{$sitename}/sdb/getAllWithSampleThisTag"
 
