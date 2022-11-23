@@ -1,7 +1,17 @@
+
+
 def _nimnew():
     item.mkdir('src','.')
     item.mkdir('bin','.')
-    item.mkfileNoOverwrite('main.nim', './src')
+    nimFileContent = '''
+include prelude
+import std/sugar
+import std/enumerate
+# import pythonpathlib
+import std/sequtils
+import strutils
+'''
+    item.mkfileNoOverwrite('main.nim', './src', nimFileContent)
     commandsContent = '''
 aliases['main'] = "nim c -r -o:./bin/main src/main.nim"  
 '''
