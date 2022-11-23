@@ -45,6 +45,7 @@ source fr'{$xonshdir}\XSH_Files\music.xsh'
 source fr'{$xonshdir}\XSH_Files\mysite.xsh'
 source fr'{$xonshdir}\XSH_Files\nim.xsh'
 source fr'{$xonshdir}\XSH_Files\OpenDir\openDir.xsh'
+source fr'{$xonshdir}\XSH_Files\Demos\demos.xsh'
 
 
 # Xontribs

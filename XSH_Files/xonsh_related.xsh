@@ -112,3 +112,4 @@ aliases['psx'] = _pushxonsh
 aliases['cmds'] = _commands
 aliases['oc'] = $oc
 aliases['importcommands'] = _importCommands
+aliases['glob'] = lambda: print('p`.*`')
