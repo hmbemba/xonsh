@@ -4,11 +4,16 @@ from PonyORM.BaseClass import BasePonyORMModel
 db = orm.Database()
 
 class DemosModel(db.Entity, BasePonyORMModel):
-    name = orm.Required(str)
+    path = orm.Required(str, unique = True)
+    name = orm.Optional(str)
     bpm = orm.Optional(int)
     key = orm.Optional(str)
 #- completeness
     docket = orm.Optional(bool)
+
+
+    def insert(**kwargs):
+        super().insert(DemosModel, **kwargs)
 
     
 
