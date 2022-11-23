@@ -12,7 +12,7 @@ def _newFLProj(projName:str):
   
     for folder in folders:
         item.mkdir(folder, '.')
-    exit
+    #exit
 
 def ppjson(jsonStr:str):
     '''pretty prints a JSON string'''
