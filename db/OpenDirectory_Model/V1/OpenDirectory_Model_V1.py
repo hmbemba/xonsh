@@ -1,5 +1,5 @@
 from pony import orm
-from pathlib import Path
+from db.PonyORM_Wrapper.PonyORMWrapper import BasePonyORMModel
 
 
 db = orm.Database()

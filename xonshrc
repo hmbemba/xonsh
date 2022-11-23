@@ -1,5 +1,6 @@
 # Imports----------------------------------------
 from dataclasses import dataclass
+import pyperclip
 import os
 import subprocess
 from pathlib import Path
@@ -18,6 +19,7 @@ from db.OpenDirectory_Model.V1.OpenDirectory_Model_V1 import *
 from dotenv import load_dotenv
 from tabulate import tabulate
 import datetime
+from XSH_Files.webcomp.db.webcomp_model_v1 import Webcomp
 
 load_dotenv()
 
@@ -48,6 +50,27 @@ xontrib load vox
 
 ## Load
 pp = pprint.PrettyPrinter(indent=4)
+
+
+def _webcomp(args):
+    if not args:
+        for entry in Webcomp.getAllAsDicts(Webcomp):
+            print(entry['compName'])
+    else:
+        return Webcomp.getByName(args[0])
+
+
+aliases['webcomp'] = _webcomp
+
+
+# def _grab(arg):
+#     pyperclip.copy(arg[0])
+
+# aliases['grab'] = _grab
+
+grab = pyperclip.copy
+
+
 
 
 
