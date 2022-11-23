@@ -25,10 +25,17 @@ def _sdb_sampleThis(args):
     else:
         curl f"{$sitename}/sdb/getAllWithSampleThisTag"
 
+@noArgMsg(acceptableArgs = "a properly formatted spotify track url")
+def _sdb_getByUrl(args):
+    url = args[0]
+    curl --data f'url={url}' f"{$sitename}/sdb/getbyurl"
+
+
 aliases['sdb_insert'] = _sdb_insert
 aliases['sdb_getall'] = f"curl {$sitename}/sdb/getall"
 aliases['sdb_getall_orderedby'] = _getAll_orderedBy
 aliases['sdb_getbybpm'] = _sdb_getbybpm
 aliases['sdb_samplethis'] = _sdb_sampleThis
+aliases['sdb_getbyurl'] = _sdb_getByUrl
 
 
