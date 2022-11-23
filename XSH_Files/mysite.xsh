@@ -1,7 +1,10 @@
 $sitename = 'hmbemba.pythonanywhere.com'
 
+def formatUrl(url):
+    return url.split('?')[0]
+
 def _sdb_insert(arg):
-    url = arg[0]
+    url = formatUrl(arg[0])
     curl --data f'url={url}' f"{$sitename}/sdb/insert"
 
 def _getAll_orderedBy(args):
@@ -20,14 +23,14 @@ def _sdb_getbybpm(args):
 
 def _sdb_sampleThis(args):
     if args:
-        url = args[0]
+        url = formatUrl(args[0])
         curl --data f'url={url}' f"{$sitename}/sdb/addSampleThisTag"
     else:
         curl f"{$sitename}/sdb/getAllWithSampleThisTag"
 
 @noArgMsg(acceptableArgs = "a properly formatted spotify track url")
 def _sdb_getByUrl(args):
-    url = args[0]
+    url = formatUrl(args[0])
     curl --data f'url={url}' f"{$sitename}/sdb/getbyurl"
 
 
