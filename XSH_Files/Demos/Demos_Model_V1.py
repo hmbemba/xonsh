@@ -59,5 +59,5 @@ class DemosModel(db.Entity, BasePonyORMModel):
 #         print(e)
         
 
-# db.bind(provider="sqlite", filename=f"Demos_Model_V1.sqlite", create_db=True)
-# db.generate_mapping(create_tables=True)
+db.bind(provider="sqlite", filename=f"Demos_Model_V1.sqlite", create_db=True)
+db.generate_mapping(create_tables=True)
