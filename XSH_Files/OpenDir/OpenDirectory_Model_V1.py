@@ -1,6 +1,4 @@
 from pony import orm
-from db.PonyORM_Wrapper.PonyORMWrapper import BasePonyORMModel
-
 
 db = orm.Database()
 

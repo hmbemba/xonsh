@@ -15,11 +15,11 @@ import re
 import uuid
 import json
 import psutil
-from db.OpenDirectory_Model.V1.OpenDirectory_Model_V1 import *
 from dotenv import load_dotenv
 from tabulate import tabulate
 import datetime
 from XSH_Files.webcomp.db.webcomp_model_v1 import Webcomp
+from XSH_Files.OpenDir.OpenDirectory_Model_V1 import *
 
 load_dotenv()
 
@@ -43,32 +43,33 @@ source fr'{$xonshdir}\XSH_Files\xonsh_related.xsh'
 source fr'{$xonshdir}\XSH_Files\music.xsh'
 source fr'{$xonshdir}\XSH_Files\mysite.xsh'
 source fr'{$xonshdir}\XSH_Files\nim.xsh'
+source fr'{$xonshdir}\XSH_Files\OpenDir\openDir.xsh'
 
 
-## Xontribs
+# Xontribs
 xontrib load vox
 
 ## Load
 pp = pprint.PrettyPrinter(indent=4)
 
 
-def _webcomp(args):
-    if not args:
-        for entry in Webcomp.getAllAsDicts(Webcomp):
-            print(entry['compName'])
-    else:
-        return Webcomp.getByName(args[0])
+# def _webcomp(args):
+#     if not args:
+#         for entry in Webcomp.getAllAsDicts(Webcomp):
+#             print(entry['compName'])
+#     else:
+#         return Webcomp.getByName(args[0])
 
 
-aliases['webcomp'] = _webcomp
+# aliases['webcomp'] = _webcomp
 
 
-# def _grab(arg):
-#     pyperclip.copy(arg[0])
+# # def _grab(arg):
+# #     pyperclip.copy(arg[0])
 
-# aliases['grab'] = _grab
+# # aliases['grab'] = _grab
 
-grab = pyperclip.copy
+# grab = pyperclip.copy
 
 
 
