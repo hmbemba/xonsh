@@ -39,6 +39,7 @@ aliases['sdb_getall'] = f"curl {$sitename}/sdb/getall"
 aliases['sdb_getall_orderedby'] = _getAll_orderedBy
 aliases['sdb_getbybpm'] = _sdb_getbybpm
 aliases['sdb_samplethis'] = _sdb_sampleThis
+aliases['sdbst'] = _sdb_sampleThis
 aliases['sdb_getbyurl'] = _sdb_getByUrl
 
 
