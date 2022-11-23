@@ -12,8 +12,6 @@ class DemosModel(db.Entity, BasePonyORMModel):
     docket = orm.Optional(bool)
 
 
-    def insert(**kwargs):
-        super().insert(DemosModel, **kwargs)
 
     
 

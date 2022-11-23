@@ -10,8 +10,6 @@ class Webcomp(db.Entity, BasePonyORMModel ):
     css = orm.Optional(orm.StrArray)
 
 
-    def insert(**kwargs):
-        super().insert(Webcomp, **kwargs)
     
 
     @orm.db_session
