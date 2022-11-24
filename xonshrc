@@ -56,23 +56,7 @@ xontrib load vox
 pp = pprint.PrettyPrinter(indent=4)
 
 
-# def _webcomp(args):
-#     if not args:
-#         for entry in Webcomp.getAllAsDicts(Webcomp):
-#             print(entry['compName'])
-#     else:
-#         return Webcomp.getByName(args[0])
 
-
-# aliases['webcomp'] = _webcomp
-
-
-# # def _grab(arg):
-# #     pyperclip.copy(arg[0])
-
-# # aliases['grab'] = _grab
-
-# grab = pyperclip.copy
 
 
 
