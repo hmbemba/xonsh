@@ -12,7 +12,7 @@ aliases["mt_firstdom"] =[ 'python', rf'{$apps}\MusicTheory\main.py', "firstdom"]
 aliases["mt_majtomin"] =[ 'python', rf'{$apps}\MusicTheory\main.py', "majtomin"]
 aliases["mt_mintomaj"] =[ 'python', rf'{$apps}\MusicTheory\main.py', "mintomaj"]
 
-aliases["mt_game_findspecificnote'] = ['python', rf'{$apps}\MusicTheory\games.py', 'findspecificnote'] #FindSpecificNote().play,
-aliases["mt_game_convertthescale'] = ['python', rf'{$apps}\MusicTheory\games.py', 'convertthescale'] #ConvertTheScale().play,
-aliases["mt_game_circloffifths'] = ['python', rf'{$apps}\MusicTheory\games.py', 'circloffifths'] #CircleOfFifths().play,
-aliases["mt_game_findallnotes'] = ['python', rf'{$apps}\MusicTheory\games.py', 'findallnotes'] ##FindAllNotes().play
+aliases['mt_game_findspecificnote'] = ['python', rf'{$apps}\MusicTheory\games.py', 'findspecificnote'] #FindSpecificNote().play,
+aliases['mt_game_convertthescale'] = ['python', rf'{$apps}\MusicTheory\games.py', 'convertthescale'] #ConvertTheScale().play,
+aliases['mt_game_circloffifths'] = ['python', rf'{$apps}\MusicTheory\games.py', 'circloffifths'] #CircleOfFifths().play,
+aliases['mt_game_findallnotes'] = ['python', rf'{$apps}\MusicTheory\games.py', 'findallnotes'] ##FindAllNotes().play
