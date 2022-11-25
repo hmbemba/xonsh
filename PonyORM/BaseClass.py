@@ -19,6 +19,11 @@ class BasePonyORMModel:
         entry.delete()
 
     @orm.db_session
+    def updateById(self,id,**kwargs) -> str:
+        entry = self.get(id = id)
+        entry.set(**kwargs)
+
+    @orm.db_session
     def getWhere(self,**kwargs) -> PonyORM_Query_Object:
         return self.get(**kwargs)
 
