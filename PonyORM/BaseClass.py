@@ -5,7 +5,7 @@ from typing import TypeVar
 PonyORM_Query_Object = TypeVar('PonyORM_Query_Object')
 
 
-class BasePonyORMModel:#(db.Entity):
+class BasePonyORMModel:
     @orm.db_session
     def insert(self,**fieldValues):
         '''
@@ -14,8 +14,13 @@ class BasePonyORMModel:#(db.Entity):
         self(**fieldValues)
 
     @orm.db_session
-    def delById():
-        ...
+    def delWhere(self,**kwargs) -> str:
+        entry = self.get(**kwargs)
+        entry.delete()
+
+    @orm.db_session
+    def getWhere(self,**kwargs) -> PonyORM_Query_Object:
+        return self.get(**kwargs)
 
     @orm.db_session
     def getAll(self) -> PonyORM_Query_Object:
@@ -23,16 +28,10 @@ class BasePonyORMModel:#(db.Entity):
 
     @orm.db_session
     def getAllAsDicts(self) -> list :
-        '''
-        returns a list of dictionaries for each entry in the model
-        '''
         return [entry.to_dict() for entry in self.getAll(self)]
 
     @orm.db_session
     def getAllOrderedByAsDicts(self, arg) -> list :
-        '''
-        returns a list of dictionaries for each entry in the model
-        '''
         return [entry.to_dict() for entry in self.getAll(self).order_by(arg)]
 
     def validatePhoneNumber(self, val):
@@ -47,7 +46,7 @@ class BasePonyORMModel:#(db.Entity):
         ...
 
     @orm.db_session
-    def getQuery_JSON(query, noResultsMsg = 'No Entries Found'):
+    def getQuery_JSON(query, noResultsMsg = 'No Entries Found'): #  -> json | str
         if not query:
             return noResultsMsg
         else:
