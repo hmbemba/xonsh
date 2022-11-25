@@ -34,12 +34,36 @@ def _sdb_getByUrl(args):
     curl --data f'url={url}' f"{$sitename}/sdb/getbyurl"
 
 
+@noArgMsg()
+def _sdb_getByArtist(args):
+    artist = formatUrl(args[0])
+    curl --data f'artist={artist}' f"{$sitename}/sdb/getbyartist"
+
+#@noArgMsg()
+def _sdb_getAll(args):
+    '''
+    can accepts  a start and step arg like this "sdb_getall 100 100"
+    Will return all entries starting at entry 100 w/ a step of 100
+    '''
+    if args:
+        start = args[0]
+        if len(args) > 1:
+            step = args[1]
+        else:
+            step = 1
+    else:
+        start = 0
+        step = 1
+    curl --data f'start={start}&step={step}' f"{$sitename}/sdb/getall"
+
+
 aliases['sdb_insert'] = _sdb_insert
-aliases['sdb_getall'] = f"curl {$sitename}/sdb/getall"
+aliases['sdb_getall'] = _sdb_getAll#f"curl {$sitename}/sdb/getall"
 aliases['sdb_getall_orderedby'] = _getAll_orderedBy
 aliases['sdb_getbybpm'] = _sdb_getbybpm
 aliases['sdb_samplethis'] = _sdb_sampleThis
 aliases['sdbst'] = _sdb_sampleThis
 aliases['sdb_getbyurl'] = _sdb_getByUrl
+aliases['sdb_getbyartist'] = _sdb_getByArtist
 
 
