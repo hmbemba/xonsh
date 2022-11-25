@@ -13,7 +13,7 @@ def _openDirectory(arg):
             #         split = entry['path'].split('\\')
             #         body = '\\'.join(split[1:])
             #         full = split[0] + '\\'+ body
-            #         print(evalx(full))
+            #         print(execx(full))
             #     else:
             #         print(evalx(entry['path']))
 
