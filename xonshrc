@@ -21,6 +21,8 @@ import datetime
 from XSH_Files.webcomp.db.webcomp_model_v1 import Webcomp
 from XSH_Files.OpenDir.OpenDirectory_Model_V1 import *
 from XSH_Files.Demos.Demos_Model_V1 import DemosModel
+from rich.console import Console
+from rich.table import Table
 
 load_dotenv()
 

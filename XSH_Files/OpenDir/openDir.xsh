@@ -1,16 +1,30 @@
+od_table = Table(title="Open Directory Command",)
+
+for item in ['key', 'path', 'note']:
+    od_table.add_column(item)
+
 def _openDirectory(arg):
     def help():
-        print("Open Directory Command\n")
-        print('Available Options\n')
         entries = od_getAll()
-        print(tabulate(entries,headers={'key':'key', 'path':'path','note':'note'}, tablefmt="grid"))
+        for entry in entries:
+            od_table.add_row(entry['key'], f"[link={entry['path']}]{entry['path']}[/link]", entry['note'])
+            # if '$' in entry['path']:
+            #     if '\\' in entry['path']:
+            #         split = entry['path'].split('\\')
+            #         body = '\\'.join(split[1:])
+            #         full = split[0] + '\\'+ body
+            #         print(evalx(full))
+            #     else:
+            #         print(evalx(entry['path']))
+
+
+        console = Console()
+        console.print(od_table)
 
     if not arg:
         help()
     else:
         if arg[0] not in od_getAllKeys(): 
-            # the locaton of od_getAllKeys() is below
-            # C:\ProgramData\xonsh\db\OpenDirectory_Model\V1\OpenDirectory_Model_V1.py
             help()
         else:
             entry = od_getByKey(arg[0])
