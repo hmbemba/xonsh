@@ -1,4 +1,15 @@
 $sitename = 'hmbemba.pythonanywhere.com'
+cmds = {
+        'insert':'sdb_insert', 
+        'getall':'sdb_getall', 
+        'getall_orderedby':'sdb_getall_orderedby', 
+        'getbybpm':'sdb_getbybpm', 
+        'samplethis':'sdb_samplethis', 
+        'getbyurl':'sdb_getbyurl', 
+        'getbyartist':'sdb_getbyartist',
+        'addTagsToId':'sdb_addTagsToId', 
+        'clearTagsById':'sdb_clearTagsById',
+    }
 
 def formatUrl(url):
     return url.split('?')[0]
@@ -58,31 +69,13 @@ def _sdb_getAll(args):
     curl --data f'start={start}&step={step}' f"{$sitename}/sdb/getall"
 
 def _startSdbSession():
-    update = {
-        'insert':'sdb_insert', 
-        'getall':'sdb_getall', 
-        'getall_orderedby':'sdb_getall_orderedby', 
-        'getbybpm':'sdb_getbybpm', 
-        'samplethis':'sdb_samplethis', 
-        'getbyurl':'sdb_getbyurl', 
-        'getbyartist':'sdb_getbyartist',
-    }
-    __xonsh__.aliases.update(**update)
-    print('SDB Session Started')
-    pp.pprint(update)
 
+    __xonsh__.aliases.update(**cmds)
+    print('SDB Session Started')
+    pp.pprint(cmds)
 
 def _endSdbSession():
-    update = {
-        'insert':'sdb_insert', 
-        'getall':'sdb_getall', 
-        'getall_orderedby':'sdb_getall_orderedby', 
-        'getbybpm':'sdb_getbybpm', 
-        'samplethis':'sdb_samplethis', 
-        'getbyurl':'sdb_getbyurl', 
-        'getbyartist':'sdb_getbyartist',
-    }
-    for item in update.keys():
+    for item in cmds.keys():
         del __xonsh__.aliases[item]
     print('SDB Session Ended')
 
@@ -97,24 +90,29 @@ def _clearTagsById(args):
     songId = args[0]
     curl --data f'id={songId}' f"{$sitename}/sdb/cleartagsbyid"
 
+@noArgMsg(acceptableArgs = '<tag>')
+def _getByTag(args):
+    tag = args[0]
+    curl --data f'tag={tag}' f"{$sitename}/sdb/getbytag"
+
 @noArgMsg(acceptableArgs = '<url> tag1 tag2 tag3 ..')
-def addTagsByUrl(args):
+def _addTagsByUrl(args):
     ...
 
-@noArgMsg(acceptableArgs = '<tag> id1 id2 id3...')
-def addTagToManyIds(args)
-    tag = args[0]
-    songIds = args[1:]
-
+# @noArgMsg(acceptableArgs = '<tag> id1 id2 id3...')
+# def _addTagToManyIds(args)
+#     ...
+    # tag = args[0]
+    # songIds = args[1:]
 
 # getAllTags?
-@noArgMsg(acceptableArgs  = '')
-def addGenreToIDs(args):
-    ...
+# @noArgMsg(acceptableArgs  = '')
+# def addGenreToIDs(args):
+#     ...
 
-@noArgMsg(acceptableArgs = '')
-def addSubgenreToIds(args):
-    ...
+# @noArgMsg(acceptableArgs = '')
+# def addSubgenreToIds(args):
+#     ...
 
 aliases['sdb_insert'] = _sdb_insert
 aliases['sdb_getall'] = _sdb_getAll#f"curl {$sitename}/sdb/getall"
@@ -128,5 +126,6 @@ aliases['sdb'] = _startSdbSession
 aliases['sdb_end'] = _endSdbSession
 aliases['sdb_addTagsToId'] = _addTagsToId
 aliases['sdb_clearTagsById'] = _clearTagsById
+aliases['sdb_getbytag'] = _getByTag
 
 
