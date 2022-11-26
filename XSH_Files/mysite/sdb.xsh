@@ -86,7 +86,35 @@ def _endSdbSession():
         del __xonsh__.aliases[item]
     print('SDB Session Ended')
 
+@noArgMsg(acceptableArgs = '<SongID> tag1 tag2 tag3 ...')
+def _addTagsToId(args):
+    songId = args[0]
+    tags = args[1:]
+    curl --data f'id={songId}&tags={tags}' f"{$sitename}/sdb/addtagstoid"
 
+@noArgMsg(acceptableArgs = '<SongID>')
+def _clearTagsById(args):
+    songId = args[0]
+    curl --data f'id={songId}' f"{$sitename}/sdb/cleartagsbyid"
+
+@noArgMsg(acceptableArgs = '<url> tag1 tag2 tag3 ..')
+def addTagsByUrl(args):
+    ...
+
+@noArgMsg(acceptableArgs = '<tag> id1 id2 id3...')
+def addTagToManyIds(args)
+    tag = args[0]
+    songIds = args[1:]
+
+
+# getAllTags?
+@noArgMsg(acceptableArgs  = '')
+def addGenreToIDs(args):
+    ...
+
+@noArgMsg(acceptableArgs = '')
+def addSubgenreToIds(args):
+    ...
 
 aliases['sdb_insert'] = _sdb_insert
 aliases['sdb_getall'] = _sdb_getAll#f"curl {$sitename}/sdb/getall"
@@ -98,5 +126,7 @@ aliases['sdb_getbyurl'] = _sdb_getByUrl
 aliases['sdb_getbyartist'] = _sdb_getByArtist
 aliases['sdb'] = _startSdbSession
 aliases['sdb_end'] = _endSdbSession
+aliases['sdb_addTagsToId'] = _addTagsToId
+aliases['sdb_clearTagsById'] = _clearTagsById
 
 
