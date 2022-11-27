@@ -9,6 +9,7 @@ cmds = {
         'getbyartist':'sdb_getbyartist',
         'addTagsToId':'sdb_addTagsToId', 
         'clearTagsById':'sdb_clearTagsById',
+        'getbytag':'sdb_getbytag'
     }
 
 def formatUrl(url):
