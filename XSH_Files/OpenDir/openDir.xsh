@@ -1,9 +1,10 @@
-od_table = Table(title="Open Directory Command",)
 
-for item in ['key', 'path', 'note']:
-    od_table.add_column(item)
 
 def _openDirectory(arg):
+    od_table = Table(title="Open Directory Command",)
+
+    for item in ['key', 'path', 'note']:
+        od_table.add_column(item)
     def help():
         entries = od_getAll()
         for entry in entries:

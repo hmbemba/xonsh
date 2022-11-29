@@ -1,5 +1,5 @@
 $sitename = 'hmbemba.pythonanywhere.com'
-cmds = {
+__cmds = {
         'insert':'sdb_insert', 
         'getall':'sdb_getall', 
         'getall_orderedby':'sdb_getall_orderedby', 
@@ -71,12 +71,12 @@ def _sdb_getAll(args):
 
 def _startSdbSession():
 
-    __xonsh__.aliases.update(**cmds)
+    __xonsh__.aliases.update(**__cmds)
     print('SDB Session Started')
-    pp.pprint(cmds)
+    pp.pprint(__cmds)
 
 def _endSdbSession():
-    for item in cmds.keys():
+    for item in __cmds.keys():
         del __xonsh__.aliases[item]
     print('SDB Session Ended')
 
