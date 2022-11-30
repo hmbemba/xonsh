@@ -33,7 +33,6 @@ def _sdb_getbybpm(args):
     
     curl f"{$sitename}/sdb/getbybpm/{bpm}/{plusMinus}"
 
-
 def _sdb_sampleThis(args):
     if args:
         url = formatUrl(args[0])
@@ -45,7 +44,6 @@ def _sdb_sampleThis(args):
 def _sdb_getByUrl(args):
     url = formatUrl(args[0])
     curl --data f'url={url}' f"{$sitename}/sdb/getbyurl"
-
 
 @noArgMsg()
 def _sdb_getByArtist(args):
