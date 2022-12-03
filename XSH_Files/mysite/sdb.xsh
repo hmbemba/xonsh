@@ -17,6 +17,7 @@ def formatUrl(url):
 
 @noArgMsg(acceptableArgs = "a spotify playlist url")
 def _sdb_insert(arg):
+    ''' insert playlist url into songdb'''
     url = formatUrl(arg[0])
     curl --data f'url={url}' f"{$sitename}/sdb/insert"
 
