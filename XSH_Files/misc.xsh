@@ -63,3 +63,4 @@ aliases['vimm'] = lambda x: subprocess.run(["powershell.exe",f'vim "{x}"'])
 aliases['sys'] = lambda: pp.pprint(getSystemInfo())
 aliases['pushahk'] = f'cd {$ahk} ; gitpush'
 aliases['pullahk'] = f'cd {$ahk} ; gitpull'
+aliases['vs_term_settings'] = f'code {$vscode_terminal_settings} '
