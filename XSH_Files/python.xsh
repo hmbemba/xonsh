@@ -21,6 +21,7 @@ def _venv():
     git commit -m "First Commit" #//your first commit with a comment
 
     print('Installed flake8 black pytest python-dotenv refurb pretty_errors')
+    #pip list
 
 ## Python
 aliases['pf'] = "pip freeze > requirements.txt"
