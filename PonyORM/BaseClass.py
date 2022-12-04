@@ -28,6 +28,10 @@ class BasePonyORMModel:
         return self.get(**kwargs)
 
     @orm.db_session
+    def getWhereAsDict(self,**kwargs) -> PonyORM_Query_Object:
+        return self.get(**kwargs).to_dict()
+
+    @orm.db_session
     def getAll(self) -> PonyORM_Query_Object:
         return orm.select(e for e in self)
 
