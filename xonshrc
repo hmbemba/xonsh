@@ -49,6 +49,7 @@ source fr'{$xonshdir}\XSH_Files\nim.xsh'
 source fr'{$xonshdir}\XSH_Files\anki.xsh'
 source fr'{$xonshdir}\XSH_Files\OpenDir\openDir.xsh'
 source fr'{$xonshdir}\XSH_Files\Demos\demos.xsh'
+source fr'{$xonshdir}\XSH_Files\webcomp\webcomp.xsh'
 
 
 # Xontribs

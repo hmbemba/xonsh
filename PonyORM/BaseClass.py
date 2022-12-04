@@ -11,7 +11,7 @@ class BasePonyORMModel:
         '''
         MyModel.insert(MyModel, key1='va1',...)
         '''
-        self(**fieldValues)
+        return self(**fieldValues)
 
     @orm.db_session
     def delWhere(self,**kwargs) -> str:

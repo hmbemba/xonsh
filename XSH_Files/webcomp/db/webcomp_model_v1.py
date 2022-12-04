@@ -6,8 +6,9 @@ db = orm.Database()
 
 class Webcomp(db.Entity, BasePonyORMModel ):
     compName = orm.Required(str, unique = True)
-    html = orm.Optional(orm.StrArray)
-    css = orm.Optional(orm.StrArray)
+    html = orm.Optional(str)
+    css = orm.Optional(str)
+    tags = orm.Optional(orm.StrArray)
 
 
     
