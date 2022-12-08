@@ -1,61 +1,24 @@
 from dataclasses import dataclass, field
 from typing import Any, List
 import inspect
-# from functools import wraps
 
+def printMyFuncs(filePath: str = __file__):
+    with open(Path(filePath),'r') as f:
+        print([{'...':line.split(" ")[1].split('(')[0]} for line in f.readlines() if re.findall("^def _", line)])
 
-# from abc import ABCMeta, abstractmethod
-# from dotenv import load_dotenv
-
-# def registerSeshAlias(alias:str):
-#     def middle(func):
-#         @wraps(func)
-#         def inner(register = False):
-#             if register:
-#                 print('registered')
-#                 DemoSessions.registry.append(f"{alias} : {func.__name__}")
-#             else:
-#                 func()
-
-#         return inner
-#     return middle
-
-
-
-
-@dataclass
-class Demosdb:
-    sessionAliases: List = field(default_factory=lambda: [])
-
-
-    def printMyFuncs(self):
-        for func in inspect.getmembers(self, predicate=inspect.ismethod):
-            if func[0][0] == '_':
-                print(f':"{func[0]}"}},')
-	# def startSesh
-	# def endSesh
-
-    def startSession(self):
-        ...
-
-    def endSession(self):
-        ...
-
-
-    def _docket(self,args):
-        #print('running docket')
-        if not args:
-            print(tabulate(DemosModel.onDocket(),headers={'path':'path', 'name':'name','bpm':'bpm','key':'key',} ))
-        else:
-            DemosModel.addToDocket(args[0])
-
-d = Demosdb()
-
-
+def _docket(self,args):
+    if not args:
+        print(tabulate(DemosModel.onDocket(),headers={'path':'path', 'name':'name','bpm':'bpm','key':'key',} ))
+    else:
+        DemosModel.addToDocket(args[0])
 
 
 aliases['demos_getall'] = lambda: print(tabulate(DemosModel.getAllAsDicts(DemosModel),headers={'path':'path', 'name':'name','bpm':'bpm','key':'key',} ))
-aliases['demos_pmf'] = d.printMyFuncs
-aliases['docket'] = d._docket
+aliases['demos_pmf'] = lambda: printMyFuncs()
+aliases['demos_docket'] = _docket
+
+
+
+
 
 
