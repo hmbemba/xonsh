@@ -59,10 +59,14 @@ pp = pprint.PrettyPrinter(indent=4)
 
 
 
+def _newDjangoproj(args):
+    projectName = args[0]
+    appName = args[1]
+    venv 
+    pip install django gunicorn whitenoise django-livereload-server fontawesomefree
+    django-admin startproject f'{projectName}'
 
-
-
-
+aliases['newdjproj'] = _newDjangoproj
 
 
 
