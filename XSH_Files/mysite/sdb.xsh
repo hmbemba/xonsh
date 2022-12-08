@@ -12,6 +12,12 @@ __cmds = {
         'getbytag':'sdb_getbytag'
     }
 
+def printMyFuncs(filePath: str = __file__):
+    with open(Path(filePath),'r') as f:
+        pp.pprint({count:line.split(" ")[1].split('(')[0] for count, line in enumerate(f.readlines()) if re.findall("^def _", line)})
+        #pp.pprint(sorted({count:line.split(" ")[1].split('(')[0] for count, line in enumerate(f.readlines()) if re.findall("^def _", line)}.items(), key = lambda d: d[1]))
+        #print([{'...':line.split(" ")[1].split('(')[0]} for line in f.readlines() if re.findall("^def _", line)])
+
 def formatUrl(url):
     return url.split('?')[0]
 
@@ -99,6 +105,10 @@ def _getByTag(args):
 def _addTagsByUrl(args):
     ...
 
+#@noArgMsg(acceptableArgs = '<url> tag1 tag2 tag3 ..')
+def _getBySongName():#(args):
+    curl f"{$sitename}/sdb/getbysongname"
+
 # @noArgMsg(acceptableArgs = '<tag> id1 id2 id3...')
 # def _addTagToManyIds(args)
 #     ...
@@ -127,5 +137,7 @@ aliases['sdb_end'] = _endSdbSession
 aliases['sdb_addTagsToId'] = _addTagsToId
 aliases['sdb_clearTagsById'] = _clearTagsById
 aliases['sdb_getbytag'] = _getByTag
+aliases['sdb_getbysongname'] = _getBySongName
+aliases['sdb_pmf'] = printMyFuncs
 
 
