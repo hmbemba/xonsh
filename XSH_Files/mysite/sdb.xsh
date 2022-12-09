@@ -12,10 +12,11 @@ __cmds = {
         'getbytag':'sdb_getbytag'
     }
 
-def printMyFuncs(filePath: str = __file__):
+
+def sdb_printMyFuncs(filePath: str = __file__):
     with open(Path(filePath),'r') as f:
         pp.pprint({count:line.split(" ")[1].split('(')[0] for count, line in enumerate(f.readlines()) if re.findall("^def _", line)})
-        #pp.pprint(sorted({count:line.split(" ")[1].split('(')[0] for count, line in enumerate(f.readlines()) if re.findall("^def _", line)}.items(), key = lambda d: d[1]))
+        ##pp.pprint(sorted({count:line.split(" ")[1].split('(')[0] for count, line in enumerate(f.readlines()) if re.findall("^def _", line)}.items(), key = lambda d: d[1]))
         #print([{'...':line.split(" ")[1].split('(')[0]} for line in f.readlines() if re.findall("^def _", line)])
 
 def formatUrl(url):
@@ -138,6 +139,6 @@ aliases['sdb_addTagsToId'] = _addTagsToId
 aliases['sdb_clearTagsById'] = _clearTagsById
 aliases['sdb_getbytag'] = _getByTag
 aliases['sdb_getbysongname'] = _getBySongName
-aliases['sdb_pmf'] = printMyFuncs
+aliases['sdb_pmf'] = lambda: sdb_printMyFuncs()
 
 
