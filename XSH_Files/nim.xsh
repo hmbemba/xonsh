@@ -15,6 +15,8 @@ import strutils
     commandsContent = f'''
 aliases['main'] = "nim c -r -o:./bin/main src/main.nim" 
 aliases['home'] = r'cd {$pwd()}' 
+aliases['src'] = r'cd {$pwd()}/src' 
+aliases['binn'] = r'cd {$pwd()}/bin' 
 '''
     item.mkfileNoOverwrite('commands.xsh', '.', commandsContent)
     importcommands
