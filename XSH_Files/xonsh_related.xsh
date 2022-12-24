@@ -113,3 +113,4 @@ aliases['cmds'] = _commands
 aliases['oc'] = $oc
 aliases['importcommands'] = _importCommands
 aliases['glob'] = lambda: print('p`.*`')
+aliases['cc'] = r'C:\Users\hmbem\Desktop\Tasks\WebDev\Temporary Projects\python\xonsh\venv\Scripts\cookiecutter.exe'

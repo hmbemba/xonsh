@@ -1,3 +1,5 @@
+{% raw %}
+
 <style>
 
     .loginErrors-container{
@@ -20,7 +22,9 @@
 
 <div class="loginErrors-topLevel" x-data="{ showMessage : true  }">
     <div class="loginErrors-container" x-show="showMessage">
-        <div class="text">{{message}}</div>
+        <div class="text">{{ message }}</div>
         <div class="exit" x-on:click="showMessage = !showMessage">X</div>
     </div>
 </div>
+
+{% endraw %}
