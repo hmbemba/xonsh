@@ -12,7 +12,7 @@ def _venv():
     item.mkfileNoOverwrite(".dockerignore",'.',content='*/venv')
     item.mkfileNoOverwrite("dockerfile")
     
-    pip install flake8 black pytest python-dotenv refurb pretty_errors
+    pip install flake8 black pytest python-dotenv refurb pretty_errors cookiecutter
     pip freeze > requirements.txt
     
     git init

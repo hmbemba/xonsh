@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="registerForm">
+  <div class="wrapper">
+    <h1>Create Account</h1>
+
+    <div class="signIn blurb">
+      Already have an account?
+      <a href=""> Sign in </a>
+    </div>
+
+    <div class="googleAuth">
+      <a href="{{ url_for('google.google_auth') }}"> Sign Up With Google </a>
+    </div>
+
+    <br>
+
+    <form method="post">
+      <div class="fieldWrapper">
+         {{ form.name(class_='field', placeholder= 'First Name') }}
+         {{ form.pwd(class_='field', placeholder= 'Password') }}
+      </div>
+
+      <div class="signUpBtn googleAuth">Sign Up With Email</div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

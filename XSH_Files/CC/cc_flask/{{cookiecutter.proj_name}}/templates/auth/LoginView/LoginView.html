@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="loginCard">
+  <h1>Login</h1>
+
+  <div class="register blurb">
+    Don't have an account?
+    <a href="{{ url_for('auth_bp.register') }}"> Sign up for free </a>
+  </div>
+
+  <div class="googleAuth">
+    <a href="{{ url_for('google.google_auth') }}"> Continue With Google </a>
+  </div>
+
+  <div class="emailLogin">
+    <a href=""> Sign in with Email instead. </a>
+  </div>
+</div>
+
+{% endblock %}
