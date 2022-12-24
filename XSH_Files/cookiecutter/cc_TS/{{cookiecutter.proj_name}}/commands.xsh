@@ -1,0 +1,1 @@
+aliases['main'] = 'tsc --watch'
