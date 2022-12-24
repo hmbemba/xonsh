@@ -1,6 +1,6 @@
 
 
-def _nimnew():
+def _newnim():
     item.mkdir('src','.')
     item.mkdir('bin','.')
     nimFileContent = '''
@@ -22,4 +22,4 @@ aliases['binn'] = r'cd {$pwd()}/bin'
     importcommands
 
 
-aliases['nimnew'] = _nimnew
+aliases['newnim'] = _newnim
