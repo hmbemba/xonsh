@@ -55,7 +55,21 @@ def getSystemInfo():
     except Exception as e:
         #logging.exception(e)
         print(e)
-    
+
+def _geticon(args):
+    '''
+    geticon 
+- cd icon folder
+- for path in glob:
+	print(path.absolute
+geticon $svg/pages 'templates/icons'
+
+https://jinja.palletsprojects.com/en/3.1.x/templates/#macros
+    '''
+    if not args:
+        cd $svg ; ls
+
+
 # Aliases----------------
 aliases['studiopics'] = _sp
 aliases['newflproj'] = _newFLProj
@@ -64,3 +78,4 @@ aliases['sys'] = lambda: pp.pprint(getSystemInfo())
 aliases['pushahk'] = f'cd {$ahk} ; gitpush'
 aliases['pullahk'] = f'cd {$ahk} ; gitpull'
 aliases['vs_term_settings'] = f'code {$vscode_terminal_settings} '
+aliases['geticon'] = _geticon
