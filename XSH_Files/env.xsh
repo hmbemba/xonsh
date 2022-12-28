@@ -20,3 +20,6 @@ $oc = fr"{$desktop}\OneCommander\OneCommander.exe"
 
 '''vs code'''
 $vscode_terminal_settings = Path($home) / 'AppData' / 'Roaming' / 'Code' / 'User' / 'settings.json'
+
+'''SVG'''
+$svg = fr'{$xonshdir}\SVG'

@@ -1,7 +1,6 @@
 from flask import Flask
 import pprint
 from blueprints.auth import auth_bp, google_auth_bp
-# from blueprints.gkeep import gkeep_bp#, google_auth_bp
 import os
 
 pp = pprint.PrettyPrinter(indent=6)
@@ -16,11 +15,11 @@ app.config.update(dict(
     GOOGLE_OAUTH_CLIENT_ID = os.environ.get("GOOGLE_OAUTH_CLIENT_ID"),
     GOOGLE_OAUTH_CLIENT_SECRET = os.environ.get("GOOGLE_OAUTH_CLIENT_SECRET"),
     
-    PONY = {
-        'provider': 'sqlite',
-        'filename': 'db.db3',
-        'create_db': True
-    }
+    # PONY = {
+    #     'provider': 'sqlite',
+    #     'filename': 'db.db3',
+    #     'create_db': True
+    # }
 ))
 
 
