@@ -98,7 +98,9 @@ def _importCommands():
         {pathToCommands}
         ''')
 
-
+def _glob():
+    pyperclip.copy('p`.*`')
+    print('p`.*` pushed to clipboard')
 # Aliases-----------------------------------
 aliases['ox'] = _openXonsh
 aliases['oxrc'] = _openXonshRC
@@ -112,4 +114,4 @@ aliases['psx'] = _pushxonsh
 aliases['cmds'] = _commands
 aliases['oc'] = $oc
 aliases['importcommands'] = _importCommands
-aliases['glob'] = lambda: print('p`.*`')
+aliases['glob'] = _glob

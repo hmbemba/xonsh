@@ -15,11 +15,6 @@ app.config.update(dict(
     GOOGLE_OAUTH_CLIENT_ID = os.environ.get("GOOGLE_OAUTH_CLIENT_ID"),
     GOOGLE_OAUTH_CLIENT_SECRET = os.environ.get("GOOGLE_OAUTH_CLIENT_SECRET"),
     
-    # PONY = {
-    #     'provider': 'sqlite',
-    #     'filename': 'db.db3',
-    #     'create_db': True
-    # }
 ))
 
 

@@ -7,3 +7,13 @@ def _start(arg):
 # Powershell aliases
 aliases['start'] = _start
 aliases['ls'] = "powershell -Command ls"
+aliases['psrun']=  lambda command: subprocess.run(["powershell.exe", f'{command[0]}'])
+
+'''
+newitem
+mkdir
+newitem_ow
+mkdir_ow
+copy
+move
+'''

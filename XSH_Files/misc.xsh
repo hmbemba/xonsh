@@ -57,17 +57,41 @@ def getSystemInfo():
         print(e)
 
 def _geticon(args):
-    '''
-    geticon 
-- cd icon folder
-- for path in glob:
-	print(path.absolute
-geticon $svg/pages 'templates/icons'
-
-https://jinja.palletsprojects.com/en/3.1.x/templates/#macros
-    '''
     if not args:
-        cd $svg ; ls
+        cd $svg 
+        for path in p`.*`:
+            print(path.absolute())
+    else:
+        svgPath = str(args[0])
+        svgName = Path(args[0]).stem.lower().replace(' ', '_')
+        dst = str(args[1]) if len(args) == 2 else ''
+        with open(svgPath) as f:
+            svgContent = f.read()
+            
+        svgMacro = f'''
+    {{% macro {svgName}() -%}}
+        {svgContent}
+    {{%- endmacro %}}
+    '''
+        howToUse = f'''
+        ###############
+        HOW TO USE
+        {{% from 'macros/{svgName}.html' import Plus %}}
+
+        {{{{{svgName}()}}}}
+                '''
+
+        if len(args) == 1:
+            print(svgMacro)
+            print(howToUse)
+        if len(args) == 2:
+            psrun f''' New-Item -Path {dst} -Name "{svgName}.html" -ItemType "file" -Value '{svgMacro}' '''
+            print(howToUse)
+        if len(args) > 2:
+            print('''
+This command only takes 2 arguments - the path to the desired svg and the destination copy path' like so:
+"geticon 'Apps.svg' '.'"
+            ''')
 
 
 # Aliases----------------
