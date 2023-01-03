@@ -1,0 +1,10 @@
+<div class="topNav">
+  <div>Home</div>
+  <div>
+    {% if user.loggedIn %}
+    <a href="">Log Out</a>
+    {% else %}
+    <a href="">Login</a>
+    {% endif %}
+  </div>
+</div>

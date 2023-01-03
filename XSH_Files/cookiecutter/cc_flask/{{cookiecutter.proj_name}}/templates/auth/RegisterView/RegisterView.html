@@ -1,37 +1,43 @@
-{% raw %}
-
 {% extends "base.html" %} {% block content %}
 
-<div class="registerForm">
+<div class="registerPage" id="registerPage">
   <div class="wrapper">
     <h1>Create Account</h1>
 
-
     <div class="signIn blurb">
       Already have an account?
-      <a href=""> Sign in </a>
+      <a href="{{ url_for('auth_bp.login') }}"> Log in </a>
     </div>
 
     <div class="googleAuth">
       <a href="{{ url_for('google.google_auth') }}"> Sign Up With Google </a>
     </div>
 
-    <br>
+    <br />
 
-    <form method="post">
+    <form method="post" id="registerForm">
+      {{ form.csrf_token }}
       <div class="fieldWrapper">
-         {{ form.name(class_='field', placeholder= 'First Name') }}
-         {{ form.pwd(class_='field', placeholder= 'Password') }}
+        {{ form.firstName(class_='field', placeholder= 'First Name') }}
+        {{ form.lastName(class_='field', placeholder= 'Last Name') }} 
+        {{ form.email(class_='field', placeholder= 'Email') }}
+        {{ form.username(class_='field', placeholder= 'Username') }}
+        {{ form.password(class_='field', placeholder= 'Password') }}
+      </div>
+
+      <div
+        class="submit"
+        hx-post=""
+        hx-trigger="click"
+        hx-target="#registerPage"
+        hx-swap="outerHTML"
+      >
+        Submit
       </div>
 
       <div class="signUpBtn googleAuth">Sign Up With Email</div>
     </form>
-
-
   </div>
 </div>
 
 {% endblock %}
-
-{% endraw %}
-

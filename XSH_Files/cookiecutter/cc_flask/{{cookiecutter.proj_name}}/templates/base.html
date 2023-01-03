@@ -1,4 +1,4 @@
-{% raw %}
+{% from 'macros/apps.html' import apps %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,23 +9,11 @@
     <!-- Local Style Sheet -->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
+      href="{{ url_for('static', filename='public/styles.css') }}"
     />
 
     <!-- HTMX -->
     <script src="https://unpkg.com/htmx.org@1.6.0"></script>
-
-    <!-- Alpine Plugins -->
-    <script
-      defer
-      src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
-    ></script>
-
-    <!-- Alpine Core -->
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-tooltip@1.x.x/dist/cdn.min.js"
@@ -42,8 +30,20 @@
   </head>
 
   <body>
+    <a href="{{ url_for('index_bp.index') }}">Home</a>
+
+    <div x-data="{ count: 0 }">
+      <button x-on:click="count++">Increment</button>
+
+      <span x-text="count"></span>
+    </div>
+
     <div class="topLevel">{% block content %} {% endblock %}</div>
+
+    <div style="width: 50px;">
+      {{apps()}}
+    </div>
+
+    <script src="{{ url_for('static', filename='public/script.js') }}"></script>
   </body>
 </html>
-
-{% endraw %}

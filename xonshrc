@@ -82,17 +82,37 @@ def appendTo(content, fileToAppend):
 
 
 
-# cd r'C:\Users\hmbem\Desktop\Scripts\Temp_Projects\cc_flask_12_23_2022-08_59PM\MyApp\templates\macros\icons\outlined'
+import xml.etree.ElementTree as ET
 
-# for item in p`.*` | isDir:
-#     cd item 
+class WTForm:
+
+    # make sure the macro_block comes back as a string
+    __xonsh_block__ = str
+
+    def __enter__(self):
+        # parse and return the block on entry
+        self.root = self.macro_block
+        return self
+
+    def __exit__(self, *exc):
+        # no reason to keep these attributes around.
+        del self.macro_block, self.macro_globals, self.macro_locals
+
+    def raw(self):
+        return self.root
     
+    def eval(self):
+        for line in self.root.split('\n'):
+            if ':' in line:
+                print(line)
+    
+    def run(self):
+        print(f'running {self.root}')
 
-
-
-
-
-
-
+with! WTForm() as f:
+    email:
+         required
+         validateEmail
+         class = 'btn blue 200'
 
 

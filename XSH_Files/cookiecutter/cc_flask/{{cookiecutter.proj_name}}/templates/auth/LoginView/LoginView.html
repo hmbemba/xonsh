@@ -1,29 +1,63 @@
-{% raw %}
 {% extends "base.html" %} {% block content %}
 
-<div class="loginCard">
-  <h1>Login</h1>
+{% include 'nav/topNav'   %}
 
+<div class="flex flex-col p-2 h-screen" id="loginCard">
+  <div class="max-w-md m-auto">
+    <h1 class="text-5xl text-center font-bold">Login</h1>
 
- 
+    <div class="text-2xl text-center">
+      Don't have an account?
+      <a
+        href="{{ url_for('auth_bp.register') }}"
+        class="underline text-blue-700"
+      >
+        Sign up for free
+      </a>
+    </div>
 
-  <div class="register blurb">
-    Don't have an account?
-    <a href="{{ url_for('auth_bp.register') }}"> Sign up for free </a>
-  </div>
+    <div class="text-center">
+      <a
+        href="{{ url_for('google.google_auth') }}"
+        class="underline text-blue-700"
+      >
+        Continue With Google
+      </a>
+    </div>
 
-  <div class="googleAuth">
-    <a href="{{ url_for('google.google_auth') }}"> Continue With Google </a>
-  </div>
+    <form method="post">
+      {{ form.csrf_token }}
 
-  <div class="emailLogin">
-    <a href=""> Sign in with Email instead. </a>
+      <div class="border p-5 my-5 rounded">
+        <div>
+          <label class="block mb-2">Username</label>
+          {{ form.username(class_="border rounded py-2 px-3 w-full
+          focus:outline-none focus:shadow-outline", placeholder= 'Username') }}
+        </div>
+        <div class="py-2">
+          <label class="block mb-2">Password</label>
+
+          {{ form.password(class_="border rounded py-2 px-3 w-full
+          focus:outline-none focus:shadow-outline", placeholder= 'Password') }}
+        </div>
+        <div class="py-2">
+          <button
+            type="button"
+            class="w-full rounded bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border-solid border-2 border-green-600"
+            class="submit"
+            hx-post=""
+            hx-trigger="click"
+            hx-target="#loginCard"
+            hx-swap="outerHTML"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div><a href="" class="underline text-blue-700">Forgot Password?</a></div>
   </div>
 </div>
 
-
-
-
 {% endblock %}
-
-{% endraw %}
