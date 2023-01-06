@@ -81,9 +81,6 @@ def appendTo(content, fileToAppend):
 
 
 
-
-import xml.etree.ElementTree as ET
-
 class WTForm:
 
     # make sure the macro_block comes back as a string

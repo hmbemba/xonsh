@@ -12,7 +12,7 @@ def _venv():
     item.mkfileNoOverwrite(".dockerignore",'.',content='*/venv')
     item.mkfileNoOverwrite("dockerfile")
     
-    pip install flake8 black pytest python-dotenv refurb pretty_errors cookiecutter
+    pip install flake8 black pytest python-dotenv refurb icecream #pretty_errors cookiecutter
     pip freeze > requirements.txt
     
     git init
@@ -27,6 +27,6 @@ def _venv():
 aliases['pf'] = "pip freeze > requirements.txt"
 aliases['venv'] = _venv
 aliases['acvenv'] = "vox enter venv"
-aliases['main'] = "python main.py"
+aliases['main'] = r".\venv\Scripts\mypy.exe --strict main.py" # "mypy main.py"
 aliases['mkvenv'] = 'python -m venv venv'
 aliases['restartpip'] = 'python -m pip install --upgrade --force-reinstall pip'
