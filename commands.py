@@ -8,6 +8,22 @@ from abc import ABCMeta, abstractmethod
 import fire
 import sys, inspect
 from pathlib import Path
+import os
+
+def mkfileAskOverwite(filename):
+    if os.path.exists(filename):
+        # file already exists, ask user if they want to overwrite it
+        response = input(f"{filename} already exists. Overwrite? [y/n] ")
+        if response.lower() != 'y':
+            # user does not want to overwrite the file
+            return
+
+    # file does not exist or user wants to overwrite it
+    with open(filename, 'w') as f:
+        # write some content to the file
+        f.write("This is the content of the file")
+        print(f"{filename} created!")
+
 
 
 @dataclass
