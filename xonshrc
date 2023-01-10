@@ -62,54 +62,59 @@ xontrib load vox
 pp = pprint.PrettyPrinter(indent=4)
 
 
+# from xonsh.aliases import Aliases
+
+# @Aliases.register(test,'tt')
+# def test():
+#     print('hello')
 
 
-def format(svgPath: str) -> str:
-    svgName = Path(svgPath).stem.lower().replace(' ', '_')
-    with open(svgPath) as f:
-        svgContent = f.read()
+# def format(svgPath: str) -> str:
+#     svgName = Path(svgPath).stem.lower().replace(' ', '_')
+#     with open(svgPath) as f:
+#         svgContent = f.read()
 
-    return f'''
-    {{% macro {svgName}() -%}}
-        {svgContent}
-    {{%- endmacro %}}
-    '''
+#     return f'''
+#     {{% macro {svgName}() -%}}
+#         {svgContent}
+#     {{%- endmacro %}}
+#     '''
 
-def appendTo(content, fileToAppend):
-    with open(fileToAppend,'a') as f:
-	    f.write(content) 
+# def appendTo(content, fileToAppend):
+#     with open(fileToAppend,'a') as f:
+# 	    f.write(content) 
 
 
 
-class WTForm:
+# class WTForm:
 
-    # make sure the macro_block comes back as a string
-    __xonsh_block__ = str
+#     # make sure the macro_block comes back as a string
+#     __xonsh_block__ = str
 
-    def __enter__(self):
-        # parse and return the block on entry
-        self.root = self.macro_block
-        return self
+#     def __enter__(self):
+#         # parse and return the block on entry
+#         self.root = self.macro_block
+#         return self
 
-    def __exit__(self, *exc):
-        # no reason to keep these attributes around.
-        del self.macro_block, self.macro_globals, self.macro_locals
+#     def __exit__(self, *exc):
+#         # no reason to keep these attributes around.
+#         del self.macro_block, self.macro_globals, self.macro_locals
 
-    def raw(self):
-        return self.root
+#     def raw(self):
+#         return self.root
     
-    def eval(self):
-        for line in self.root.split('\n'):
-            if ':' in line:
-                print(line)
+#     def eval(self):
+#         for line in self.root.split('\n'):
+#             if ':' in line:
+#                 print(line)
     
-    def run(self):
-        print(f'running {self.root}')
+#     def run(self):
+#         print(f'running {self.root}')
 
-with! WTForm() as f:
-    email:
-         required
-         validateEmail
-         class = 'btn blue 200'
+# with! WTForm() as f:
+#     email:
+#          required
+#          validateEmail
+#          class = 'btn blue 200'
 
 

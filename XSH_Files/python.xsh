@@ -27,6 +27,13 @@ def _venv():
 aliases['pf'] = "pip freeze > requirements.txt"
 aliases['venv'] = _venv
 aliases['acvenv'] = "vox enter venv"
-aliases['main'] = r".\venv\Scripts\mypy.exe --strict main.py" # "mypy main.py"
+
+########## MAIN ########################
+aliases['main'] = r'python main.py'
+aliases['mmain'] = r".\venv\Scripts\mypy.exe main.py" 
+aliases['mmains'] = r".\venv\Scripts\mypy.exe --strict main.py"
+aliases['mainr'] = r'refurb main.py'
+
+
 aliases['mkvenv'] = 'python -m venv venv'
 aliases['restartpip'] = 'python -m pip install --upgrade --force-reinstall pip'
