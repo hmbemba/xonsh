@@ -20,7 +20,6 @@ def _venv():
     git status #//see all the files you have staged for commit
     git commit -m "First Commit" #//your first commit with a comment
 
-    #print('Installed flake8 black pytest python-dotenv refurb pretty_errors')
     pip list
 
 ## Python

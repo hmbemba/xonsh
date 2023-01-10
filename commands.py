@@ -51,6 +51,8 @@ from dataclasses import dataclass, field
 from typing import Any, List
 from abc import ABCMeta, abstractmethod
 from dotenv import load_dotenv
+from icecream import ic
+ic.configureOutput(includeContext=True,contextAbsPath=True)
 # import os
 
 load_dotenv()
